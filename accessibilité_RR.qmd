@@ -1,0 +1,45 @@
+---
+title: "R et l'Accessibilité : Vos productions accessibles par la pratique"
+author:
+  - Christophe Regouby^[Airbus S.A.S., christophe.regouby@airbus.com]
+format:   
+  pdf:
+    pdf-standard: ua-2
+indent: true
+bibliography: ref.bib
+lang: fr
+date: 2026-03-31
+---
+
+```{=typst}
+#align(center)[#strong[Résumé (max 300 mots)]]
+```
+R offre un potentiel d'accessibilité inégalé, mais ce potentiel reste théorique tant qu'il n'est pas mis en pratique. Que vous produisiez un graphique, un rapport, un tableau de bord ou un package, votre objectif reste le même : que votre message soit reçu intégralement par **toute** votre audience, avec ou sans handicap, sans barrières.
+
+Nous passerons en revue les solutions concrètes d'accessibilité: couleurs, polices de caractère, contraste, encodage des textes alternatifs,... et nous les intégrerons ensemble dans votre flux de travail pour transformer vos productions en outils réellement accessibles avec un effort limité.
+
+**Mots-clefs (3 à 5)** : Accessibilité - Graphique - Package - Bonnes Pratiques
+
+## Développement
+
+On fantasme souvent que l'effort d'accessibilité n'est nécessaire que pour quelques pourcents de la population en situation de handicap, et qu'on peut bien s'en remettre aux options par défaut qui sont certainement "correctement choisies"... Pourtant, l'accessibilité ne se comprend jamais mieux que par l'exemple. Nous vous proposons d'expérimenter la différence de réception entre deux versions d'un même projet (graphique, document, package) : l'une basée sur les options par défaut, l'autre rendue accessible.
+
+L'enjeu est souvent sous-estimé: sans effort d'accessibilité, les conséquences sont immédiates :
+
+-   **Message manqué :** Une partie de l'audience ne perçoit pas l'information clé.
+
+-   **Collaboration freinée :** Des barrières techniques excluent des partenaires potentiels.
+
+-   **Communauté restreinte :** Votre package se prive de contributeurs talentueux.
+
+Bonne nouvelle : ne pas tomber dans ces écueils est plus simple qu'il n'y paraît. Les bonnes pratiques sont documentées [@sampath2021accessibility] et l'outillage sous R est aujourd'hui complet autour des packages rbranding[@rbranding] ou de l'outillage avec Quarto[@quarto]. Nous verrons comment intégrer ces réflexes directement dans votre flux de travail quotidien, qu'il contienne :
+
+-   des graphiques (couleurs, légendes, data-ink-ratio)
+
+-   des tableaux (statiques, dynamiques)
+
+-   des applis shiny
+
+-   du code (projet logiciel ou package)
+
+    pour que l'accessibilité devienne une routine, et non une contrainte.

@@ -1,0 +1,104 @@
+---
+title: "R et l'Accessibilité : De la production accessible par la pratique"
+author:
+  - Christophe Regouby^[Airbus S.A.S., christophe.regouby@airbus.com]
+format: typst
+indent: true
+bibliography: ref.bib
+lang: fr
+---
+
+```{=typst}
+#align(center)[#strong[Résumé (max 300 mots)]]
+```
+R offre un potentiel d'accessibilité inégalé, mais ce potentiel reste théorique tant qu'il n'est pas mis en pratique. Que vous produisiez un graphique, un rapport, un tableau de bord ou un package, votre objectif reste le même : que votre message soit reçu intégralement par **toute** votre audience, sans barrières.
+
+Nous passerons en revue les solutions concrètes, et nous les intégrerons dans votre flux de travail pour transformer vos productions en outils réellement accessibles avec un effort limité.
+
+**Mots-clefs (3 à 5)** : Accessibilité - Graphique - Package - Enseignement
+
+## Développement
+
+L'accessibilité ne se comprend jamais mieux que par l'exemple. Nous vous proposons d'expérimenter la différence de réception entre deux versions d'un même projet (graphique, document, package) : l'une standard, l'autre optimisée.
+
+L'enjeu est souvent sous-estimé: sans effort d'accessibilité, les conséquences sont immédiates :
+
+-   **Message manqué :** Une partie de l'audience ne perçoit pas l'information clé.
+
+-   **Collaboration freinée :** Des barrières techniques excluent des partenaires potentiels.
+
+-   **Communauté restreinte :** Votre package se prive de contributeurs talentueux.
+
+Bonne nouvelle : ne pas tomber dans ces écueils est plus simple qu'il n'y paraît. Les bonnes pratiques sont documentées [@sampath2021accessibility] et l'outillage sous R est aujourd'hui complet. Nous verrons comment intégrer ces réflexes directement dans votre flux de travail quotidien pour que l'accessibilité devienne une routine, et non une contrainte.
+
+## Agenda
+
+### C'est quoi l'accessibilité
+
+-pour qui ? 
+  - 1.5 % developpeurs visually impaired
+  - audio impared
+  - physically impared
+  - mentally impared
+
+Exemple: les lunettes
+Exemple: reagarder un écran en plein soleil
+Exemple: 100% temporary imparement
+Exemple: future you
+
+-pourquoi
+  - ne pas rater son message
+  - capturer toute son audience
+  - effort psychique pour l'appropriation
+  - accueil d'une communauté de développeurs sur un package
+  
+### L'outillage d'accessibilité
+
+- les lecteur d'écran
+- 
+
+### Les couleurs
+- exemple d'erreur
+- bonne pratiques
+-outillage en action
+  {} 
+https://projects.susielu.com/viz-palette?colors=%5B%22%23e69f00%22%2C%22%2356b4e9%22%2C%22%23009e73%22%2C%22%23f0e442%22%5D&backgroundColor=%22white%22&fontColor=%22black%22&mode=%22none%22  
+
+  
+### Graphiques
+- exemple d'erreur
+- bonnes pratiques
+- outillage en action
+ {}
+ Nicola Rennnie Accesssible Linechart : https://nrennie.rbind.io/blog/accessible-line-chart/
+ 
+### Tableaux
+-> acccessibility empathy for spreadsheets
+- exemple d'erreur
+- bonnes pratiques
+- outillage en action
+
+### Shiny
+- exemple d'erreur
+DT:: filter='top' see https://junkangworld.com/blog/the-ultimate-2025-guide-to-ada-compliant-shiny-dt-filters
+
+
+## Le CLI 
+pour les developpeurs de packages 
+- exemple d'erreur
+- bonne pratiques
+- outillage en action
+
+## La production de documents
+ - quarto 1.8 Accessibility checks with axe-core (html, dashboard, revealjs)
+ - quarto 1.9 PDF Accessibility with ua-2 standard (Typst & LaTeX)
+ 
+ 
+--- 
+sources
+https://github.com/orgs/quarto-dev/discussions?discussions_q=is%3Aopen+label%3Aaccessibility+
+Dataviz Accessibility pages / people : https://github.com/dataviza11y/resources
+Whriting Alt-Text : https://medium.com/nightingale/writing-alt-text-for-data-visualization-2a218ef43f81
+Colors : 
+  https://colorbrewer2.org/#type=sequential&scheme=YlGn&n=5
+  https://projects.susielu.com/viz-palette?colors=%5B%22%23e69f00%22%2C%22%2356b4e9%22%2C%22%23009e73%22%2C%22%23f0e442%22%5D&backgroundColor=%22white%22&fontColor=%22black%22&mode=%22deuteranopia%22
