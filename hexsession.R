@@ -1,36 +1,39 @@
 # building latest hex-sticker assembly into images
 library(hexsession)
+library(here)
 source("R/make_tile.R")
 
 # torch mlverse & friends
 make_tile(packages = c("luz", "torch", "torchdatasets", "hfhub", "safetensors", "scorcher",
                        "torchvision", "torchvisionlib", "innsight","tabnet", "brulee",
                        "tok", "minhub", "ETM", "torchaudio", "tft", "torchwavelets",
-                       "torchgnn", "survdnn"),
+                       "torchgnn", "survdnn", "tinytorch"),
           local_images = c("https://torch.mlverse.org/css/images/hex/luz.png",
                            "https://torch.mlverse.org/css/images/hex/torch.png",
-                           "../../_package_development/torch.fr/images/torchdatasets.png",
-                           "../../_package_development/torch.fr/images/hfhub.png",
-                           "../../_package_development/torch.fr/images/safetensors.png",
+                           "images/torchdatasets.png",
+                           "images/hfhub.png",
+                           "images/safetensors.png",
                            "https://github.com/jtleek/scorcher/raw/main/man/figures/scorcher.png",
 
                            "https://torch.mlverse.org/css/images/hex/torchvision.png",
-                           "../../_package_development/torch.fr/images/torchvisionlib.png",
+                           "images/torchvisionlib.png",
                            "https://bips-hb.github.io/innsight/reference/figures/logo.png",
 
-                           "../../_package_development/torch.fr/images/hex-tabnet(2).png",
+                           "images/hex-tabnet(2).png",
                            "https://brulee.tidymodels.org/logo.png",
 
 
-                           "../../_package_development/torch.fr/images/tok.png",
-                           "../../_package_development/torch.fr/images/minhub.png",
+                           "images/tok.png",
+                           "images/minhub.png",
                            "https://github.com/bnosac/ETM/raw/master/tools/example-visualisation.png",
 
                            "https://torch.mlverse.org/css/images/hex/torchaudio.png",
-                           "../../_package_development/torch.fr/images/tft.png",
-                           "../../_package_development/torch.fr/images/torchwavelets.png",
-                           "https://torch.mlverse.org/css/images/hex/torch.png",
-                           "https://torch.mlverse.org/css/images/hex/torch.png"),
+                           "images/tft.png",
+                           "images/torchwavelets.png",
+                           "images/torchgnn.png",
+                           "images/survdnn.png",
+                           "images/tinytorch.png"
+                           ),
           local_urls = c("https://mlverse.github.io/luz/", "https://torch.mlverse.org/docs/",
                         "https://mlverse.github.io/torchdatasets/",  "https://mlverse.github.io/hfhub/",
                         "https://mlverse.github.io/safetensors/", "https://github.com/jtleek/scorcher",
@@ -50,7 +53,9 @@ make_tile(packages = c("luz", "torch", "torchdatasets", "hfhub", "safetensors", 
                         "https://mlverse.github.io/tft/",
                         "https://github.com/mlverse/torchwavelets",
                         "https://josiahparry.github.io/torchgnn/",
-                        "https://github.com/ielbadisy/survdnn"),
+                        "https://github.com/ielbadisy/survdnn",
+                        "https://github.com/cornball-ai/tinytorch"
+                        ),
           output_dir = here("temp_hexsession")
 )
 fs::file_move("temp_hexsession/_hexout.html", "temp_hexsession/hexout.html")
