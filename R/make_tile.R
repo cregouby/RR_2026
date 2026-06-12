@@ -1,11 +1,18 @@
 # a modified version of hexsession::make_tile that
 #  - accept local images as URLs
+#  - accept a tibble as `packages` input with the 3 columns named `packages`, `local_images`, `local_urls`
 make_tile <- function (packages = NULL, local_images = NULL, local_urls = NULL, 
           dark_mode = FALSE, color_arrange = FALSE, highlight_mode = FALSE, 
           focus = NULL, output_dir = tempdir()) 
 {
   temp_dir <- file.path(output_dir, "temp_hexsession")
   dir.create(temp_dir, showWarnings = FALSE)
+  # tibble
+  if (inherits(packages, "data.frame")) {
+    local_urls <- packages$local_urls
+    local_images <- packages$local_images
+    packages <- packages$packages
+  }
   if (is.null(local_images)) {
     package_data <- get_pkg_data(packages)
     all_logopaths <- package_data$logopaths

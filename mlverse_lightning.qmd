@@ -7,17 +7,15 @@ indent: true
 lang: fr
 ---
 
+::: notes
 L’univers des packages {torch}, le « mlverse », s’est enrichi durant l’année écoulée grâce à des améliorations considérables des packages historiques, une expansion vers de nouveaux domaines métiers et une adoption croissante par la communauté. Je vous présenterai toute cette richesse lors d'une conférence courte, en démontrant à quel point les échanges lors des précédentes Rencontres R ont favorisé cette expansion. Une véritable invitation à se rencontrer, collaborer et contribuer.
-
-**Mots-clefs (3 à 5)** : Apprentissage profond - Torch - IA - Package - Écosystème R
+:::
 
 ## Le mlverse
 
-Un univers de packages dédiés au deep learning
+![](images/all_packages.png)
 
-autour de {torch} un package d'API R de `libtorch` la librairie C++ derrière pytorch.
-
-On exclue aujourd'hui les packages qui reposent sur reticulate ?
+Un univers de packages dédiés au deep learning autour de {torch}
 
 ------------------------------------------------------------------------
 
@@ -29,19 +27,18 @@ la jungle / les groupes (coeur / applications / fondation / services)
 
 ## Les nouveauté 2026 : {torch}
 
-- passage à libtorch 2.8 (équivalent de pytorch 2.8)
-- amélioration des performances
-- ajout de `torch_scaled_dot_product_attention()` pour la performance des transformers.
-- ajout de `nn_aum_loss()` pour la classification binaire déséquilibrée
-- ajout de `install_torch_sitrep()` pour un diagnostique profond de l'installation.
+- libtorch 2.8 (équivalent de pytorch 2.8)
+- plus de performance
+- `torch_scaled_dot_product_attention()` pour la performance des transformers.
+- `nn_aum_loss()` pour la classification binaire déséquilibrée
+- `install_torch_sitrep()` pour un diagnostique profond de l'installation.
 
 ------------------------------------------------------------------------
 
 ## Les nouveauté 2026 : {torchvision}
 
-- ajout de 43 datasets regroupés dans des collections.
-- ajouts de 26 datasets unitaires, regroupés par tâche de vision
-- ajout de modèles de détection d'objet `fasterrcnn` et `maskrcnn`
+- +43 datasets en collections, +26 datasets unitaires
+- des nouveaux modèles de détection d'objet dont `fasterrcnn` et `maskrcnn`
 
 | Tâche | Classification | Détection d'objet | Segmentation sémantique | Sous-titrage |
 |---------------|---------------|---------------|---------------|---------------|
@@ -52,9 +49,25 @@ la jungle / les groupes (coeur / applications / fondation / services)
 
 ------------------------------------------------------------------------
 
+Écologie
+
+Biologie
+
+Biologie marine
+
+Médical
+
+Documents
+
+Infrarouge
+
+------------------------------------------------------------------------
+
 ## Les nouveauté 2026 : {tabnet}
 
-- ajout de `nn_aum_loss()` pour la classification binaire déséquilibrée. Exemple sur modeldata::lending_club() (ratio de 18 pour 1)
+- `nn_aum_loss()` pour la classification binaire déséquilibrée.
+
+  Exemple sur `modeldata::lending_club()`\` (ratio de 18 pour 1)
 
   ::::: columns
   ::: {.column width="50%"}
@@ -65,5 +78,3 @@ la jungle / les groupes (coeur / applications / fondation / services)
   ![Courbe de Precsison-recall du modèle XGBoost avec case_weight](images/clipboard-380974417.png)
   :::
   :::::
-
-

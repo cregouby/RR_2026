@@ -1,10 +1,11 @@
 # building latest hex-sticker assembly into images
 library(hexsession)
 library(here)
-source("R/make_tile.R")
+library(tidyverse)
+source("R/make_tile.R") # modified make_tile to accept tibble and loacl images
 
 # torch mlverse & friends
-make_tile(packages = c("luz", "torch", "torchdatasets", "hfhub", "safetensors", "scorcher",
+torch_tbl <- tibble(packages = c("luz", "torch", "torchdatasets", "hfhub", "safetensors", "scorcher",
                        "torchvision", "torchvisionlib", "innsight","tabnet", "brulee",
                        "tok", "minhub", "ETM", "torchaudio", "tft", "torchwavelets",
                        "torchgnn", "survdnn", "tinytorch"),
@@ -55,47 +56,27 @@ make_tile(packages = c("luz", "torch", "torchdatasets", "hfhub", "safetensors", 
                         "https://josiahparry.github.io/torchgnn/",
                         "https://github.com/ielbadisy/survdnn",
                         "https://github.com/cornball-ai/tinytorch"
-                        ),
-          output_dir = here("temp_hexsession")
+                        )
 )
-fs::file_move("temp_hexsession/_hexout.html", "temp_hexsession/hexout.html")
+reticulated_tbl <- tibble(packages = c("tabpfn", "iltm", "tabicl", "tabdpt"),
+          local_images = c("images/tabpfn.png",
+                           "images/iltm.png",
+                           "images/tabicl.png",
+                           "images/tabdpt.png"
+                           ),
+          local_urls = c("https://github.com/tidymodels/tabpfn",
+                        "https://github.com/frankiethull/iltm",
+                        "https://github.com/frankiethull/tabicl",
+                        "https://github.com/frankiethull/tabdpt"
+                        )
+)
+make_tile(torch_tbl, output_dir = here())
 snap_tile("images/tile_mlverse.png", screen_width = 600)
+fs::file_move(here("temp_hexsession/_hexout.html"), here("temp_hexsession/torch.html"))
 
-# torch vision
-make_tile(packages = c("torch", ),
-          local_images = c("https://torch.mlverse.org/css/images/hex/torch.png"),
-          local_urls = c("https://torch.mlverse.org/docs/",
-)
-)
-fs::file_move("temp_hexsession/_hexout.html", "temp_hexsession/hexout.html")
-snap_tile("images/tile_torch_vision.png")
+# reticulated
+make_tile(reticulated_tbl, output_dir = here())
+snap_tile("images/tile_reticulate.png")
+fs::file_move(here("temp_hexsession/_hexout.html"), here("temp_hexsession/reticulate.html"))
 
-# torch tabular
-make_tile(packages = c("torch", ),
-          local_images = c("https://torch.mlverse.org/css/images/hex/torch.png",
-),
-          local_urls = c("https://torch.mlverse.org/docs/",
-)
-)
-fs::file_move("temp_hexsession/_hexout.html", "temp_hexsession/hexout.html")
-snap_tile("images/tile_torch_tabular.png")
-
-# torch NLP
-make_tile(packages = c("torch", "tok", "minhub", "ETM"),
-          local_images = c("https://torch.mlverse.org/css/images/hex/torch.png",
-),
-          local_urls = c("https://torch.mlverse.org/docs/",
-)
-)
-fs::file_move("temp_hexsession/_hexout.html", "temp_hexsession/hexout.html")
-snap_tile("images/tile_torch_nlp.png")
-
-# torch timeseries
-make_tile(packages = c("torch"),
-          local_images = c("https://torch.mlverse.org/css/images/hex/torch.png",
-),
-          local_urls = c("https://torch.mlverse.org/docs/",
-)
-)
-fs::file_move("temp_hexsession/_hexout.html", "temp_hexsession/hexout.html")
-snap_tile("images/tile_torch_ts.png")
+#
