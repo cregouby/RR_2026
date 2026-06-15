@@ -39,15 +39,6 @@ Exemple: future you
 effort psychique pour l'appropriation - accueil d'une communauté de
 développeurs sur un package ---
 
-## Agenda
-
-- les couleurs
-- les graphiques
-- les tableaux
-- le code
-- les documents
-- les applis shiny
-
 ::: notes
 On va prouver que ce n'est pas un compromis sur l'esthétique, mais au
 contraire mettre la priorité sur la communication

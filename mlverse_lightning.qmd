@@ -31,10 +31,14 @@ L’univers des packages {torch}, le « mlverse », s’est enrichi durant l’a
 ## Les nouveauté 2026 : {torch}
 
 - libtorch 2.8 (équivalent de pytorch 2.8)
-- plus de performance
+- performance
 - `torch_scaled_dot_product_attention()` pour la performance des transformers.
 - `nn_aum_loss()` pour la classification binaire déséquilibrée
-- `install_torch_sitrep()` pour un diagnostique profond de l'installation.
+- `install_torch_sitrep()` pour un diagnostique profond.
+- les packages de runtime cudatoolkit
+``` R
+remotes::install_github("mlverse/cudatoolkit/cuda12.8")
+```
 
 ------------------------------------------------------------------------
 

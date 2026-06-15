@@ -6,119 +6,266 @@ format: revealjs
 indent: true
 bibliography: ref.bib
 lang: fr
+editor: 
+  markdown: 
+    wrap: 72
 ---
 
-```{=typst}
-#align(center)[#strong[Résumé (max 300 mots)]]
-```
-R offre un potentiel d'accessibilité inégalé, mais ce potentiel reste théorique tant qu'il n'est pas mis en pratique. Que vous produisiez un graphique, un rapport, un tableau de bord ou un package, votre objectif reste le même : que votre message soit reçu intégralement par **toute** votre audience, sans barrières.
-
-Nous passerons en revue les solutions concrètes, et nous les intégrerons dans votre flux de travail pour transformer vos productions en outils réellement accessibles avec un effort limité.
-
-**Mots-clefs (3 à 5)** : Accessibilité - Graphique - Package - Enseignement
-
-## Développement
-
-L'accessibilité ne se comprend jamais mieux que par l'exemple. Nous vous proposons d'expérimenter la différence de réception entre deux versions d'un même projet (graphique, document, package) : l'une standard, l'autre optimisée.
-
-L'enjeu est souvent sous-estimé: sans effort d'accessibilité, les conséquences sont immédiates :
-
--   **Message manqué :** Une partie de l'audience ne perçoit pas l'information clé.
-
--   **Collaboration freinée :** Des barrières techniques excluent des partenaires potentiels.
-
--   **Communauté restreinte :** Votre package se prive de contributeurs talentueux.
-
-Bonne nouvelle : ne pas tomber dans ces écueils est plus simple qu'il n'y paraît. Les bonnes pratiques sont documentées [@sampath2021accessibility] et l'outillage sous R est aujourd'hui complet. Nous verrons comment intégrer ces réflexes directement dans votre flux de travail quotidien pour que l'accessibilité devienne une routine, et non une contrainte.
-
-## Agenda
-
----
+------------------------------------------------------------------------
 
 ### C'est quoi l'accessibilité
 
--pour qui ? 
-  - 1.5 % developpeurs visually impaired
-  - audio impared
-  - physically impared
-  - mentally impared
+Pour qui ?
 
+- 1.5 % des développeurs sont déficients visuels
+
+- 4 % de l'audience souffre de daltonisme
+
+- déficience auditive : acouphènes
+
+- déficience physique : accès avec un clavier seulement
+
+- 12% troubles du neuro-développement (troubles "dis")
+
+::: notes
 Exemple: les lunettes
+
 Exemple: regarder un écran en plein soleil
-Exemple: 100% temporary imparement
+
+Exemple: Tout le monde souffrira un handicap temporaire
+
 Exemple: future you
+:::
 
--pourquoi
-  - ne pas rater son message
-  - capturer toute son audience
-  - effort psychique pour l'appropriation
-  - accueil d'une communauté de développeurs sur un package
-  
----
+------------------------------------------------------------------------
 
-### L'outillage d'accessibilité
+Pourquoi
+
+\- ne pas rater son message
+
+\- capturer toute son audience
+
+\- effort psychique pour l'appropriation
+
+\- accueil d'une communauté de développeurs sur un package
+
+::: notes
+On va prouver que ce n'est pas un compromis sur l'esthétique, mais au
+contraire atteindre ses objectifs et mettre la priorité sur la
+communication.
+:::
+
+------------------------------------------------------------------------
+
+## Les normes
+
+La **directive (UE) 2019/882 relative aux exigences en matière
+d'accessibilité applicables aux produits et services**, dite **EAA** (de
+l'[anglais](https://fr.wikipedia.org/wiki/Anglais "Anglais") « European
+Accessibility Act »)
+
+Adoptée en europe en avril 2019, Publiée en France en Mars 2023 mise en
+oeuvre
+
+- au plus tard juin 2025 pur les nouveaux produits et services.
+
+- au plus tard en juin 2030 pour tous les produits et services anciens
+
+------------------------------------------------------------------------
+
+### Agenda
+
+- les couleurs
+- les graphiques
+- les tableaux
+- le code
+- les applis shiny
+- les documents
+
+------------------------------------------------------------------------
+
+## L'outillage d'accessibilité
 
 - les lecteur d'écran
-- 
 
----
+- en-ligne : Passer le site web au travers de
+  [https://wave.webaim.org](https://wave.webaim.org/).
+
+- hors-ligne: l'outil lighthouse dans chrome developpeur tools
+
+![](images/clipboard-2906010032.png)
+
+------------------------------------------------------------------------
 
 ### Les couleurs
-- exemple d'erreur
-- bonne pratiques
--outillage en action
-  {} 
-https://projects.susielu.com/viz-palette?colors=%5B%22%23e69f00%22%2C%22%2356b4e9%22%2C%22%23009e73%22%2C%22%23f0e442%22%5D&backgroundColor=%22white%22&fontColor=%22black%22&mode=%22none%22  
 
---- 
+- exemple d'erreur
+
+- bonne pratiques
+
+- outillage en action
+
+  [https://projects.susielu.com/viz-palette](https://projects.susielu.com/viz-palette?colors=%5B%22%23e69f00%22%2C%22%2356b4e9%22%2C%22%23009e73%22%2C%22%23f0e442%22%5D&backgroundColor=%22white%22&fontColor=%22black%22&mode=%22none%22)
+  <https://colorbrewer2.org/#type=sequential&scheme=YlGn&n=5>
+
+  ::: notes
+  à partir de viz-palette, on fait un aller-retour vers colorbrewer2 (ou
+  pas, puisqu'on peut déja y choisir les palettes compatibles)
+  :::
+
+------------------------------------------------------------------------
 
 ### Graphiques
+
 - exemple d'erreur
 - bonnes pratiques
-- outillage en action
- {}
- Nicola Rennnie Accesssible Linechart : https://nrennie.rbind.io/blog/accessible-line-chart/
+- outillage en action {} Nicola Rennnie Accesssible Linechart :
+  https://nrennie.rbind.io/blog/accessible-line-chart/
 
---- 
+------------------------------------------------------------------------
+
+### Alt-text
+
+![](images/clipboard-2580408446.png){fig-alt="Le format des alt-text pour les dataviz en 4 informations clefs. Type de graphique, Jeu de données, raison du graphique, lien vers les sources."}
+
+Type de graphique : Il est nécessaire de nomer la famille de graphique,
+pour donner le contexte à la suite du texte alternatif
+
+ex: un diagramme à barres
+
+Pour le nom des diagrammes, consultez le guide de datavisualization de
+toulouse-dataviz.fr
+
+Jeu de données : Quelles données sont présentes dans le graphique ? les
+variables des axes x et y le plus généralement
+
+Raison de la présence du graphique: Pourquoi avoir inclus ce graphique,
+que fait il apparaître : une mention de chaque information visuelle, qui
+indique quoi regarder.
+
+Lien vers les sources : à inclure dans le texte, pas dans l'alt-text,
+car doit profiter à tout le monde.
+
+------------------------------------------------------------------------
+
+![](images/clipboard-3511956222.png)
+
+![](images/clipboard-1732821648.png)
+
+Plus difficile
+
+![](images/clipboard-726440441.png)
+
+![](images/clipboard-844471837.png)
+
+------------------------------------------------------------------------
 
 ### Tableaux
--> acccessibility empathy for spreadsheets
-- exemple d'erreur
-- bonnes pratiques
-- outillage en action
 
----
+-\> acccessibility empathy for spreadsheets - exemple d'erreur - bonnes
+pratiques - outillage en action
+
+------------------------------------------------------------------------
 
 ### Shiny
-- exemple d'erreur
-DT:: filter='top' see https://junkangworld.com/blog/the-ultimate-2025-guide-to-ada-compliant-shiny-dt-filters
 
----
+- Le problème :
+  <https://www.jumpingrivers.com/blog/accessible-shiny-standards-wcag/>
 
-## Le CLI 
-pour les developpeurs de packages 
-- exemple d'erreur
-- bonne pratiques
-- outillage en action
+- Solution {a11yShiny} : Accessible wrappers for popular R
+  [Shiny](https://shiny.posit.co/) UI components, enforcing ARIA
+  attributes and structural requirements in line with [BITV
+  2.0](https://www.barrierefreiheit-dienstekonsolidierung.bund.de/Webs/PB/DE/gesetze-und-richtlinien/bitv2-0/bitv2-0-node.html)
+  and WCAG 2.1 AA.
+
+------------------------------------------------------------------------
+
+## Les packages
+
+pour les developpeurs de packages
+
+### Les messages
+
+### La documentation (le site web)
+
+exemple d'erreur sur la publication du site web de documentation avec
+{pkgdown}
+
+![](images/clipboard-293311766.png)
+
+bonne pratiques
+
+Cohérence des figures, des styles, des couleurs.
+
+outillage en action
+
+Passer le site web au travers de
+[https://wave.webaim.org](https://wave.webaim.org/).
+
+------------------------------------------------------------------------
+
+## Le CLI
+
+pour les developpeurs de packages - exemple d'erreur - bonne pratiques -
+outillage en action
 
 ## La production de documents
- - quarto 1.8 Accessibility checks with axe-core (html, dashboard, revealjs)
- - quarto 1.9 PDF Accessibility with ua-2 standard (Typst & LaTeX)
- 
----
+
+### HTML (quarto 1.8)
+
+- Vérification de l'accessibilité avec `axe-core` (html, dashboard,
+  revealjs)
+
+:::::: columns
+::: {.column width="25%"}
+``` yaml
+format:
+  html:
+    axe: true
+```
+:::
+
+::: {.column width="35%"}
+``` yaml
+format:
+  html:
+    axe:
+      output: document
+```
+:::
+
+::: {.column width="30%"}
+``` yaml
+format:
+  html:
+    axe:
+      output: json
+```
+:::
+::::::
+
+### PDF (quarto 1.9)
+
+- Vérification des standard UA-1 et UA-2 (Typst & LaTeX)
+
+------------------------------------------------------------------------
 
 ::::: columns
 ::: {.column width="50%"}
+PDF (LaTeX): Standard UA-2
 
-1. LaTeX (Standard UA-2)
-
+``` yaml
+format:
+  pdf:
+    pdf-standard: ua-2
+```
 
 ```{mermaid}
 flowchart TD
-    A["📄 Document Source Markdown<br/>(YAML: pdf-standard: ua-2, lang, fig-alt)"]
-    B["⚙️ Compilation LaTeX<br/>(Génération du PDF balisé / Aucun contrôle d'accessibilité)"]
-    C["🔍 Validation Externe (veraPDF)<br/>(Quarto lance veraPDF)"]
-    D["⚠️ PDF Final produit avec des Warnings<br/>(Compilation non bloquée malgré les erreurs)"]
+    A["📄 Document source Quarto markdown"]
+    B["⚙️ Compilation LaTeX<br/>(Génération du PDF balisé <br/> Pas de contrôle d'accessibilité)"]
+    C["🔍 Validation Externe <br/>(Quarto lance veraPDF)"]
+    D["⚠️ PDF Final produit avec des Warnings<br/>(Compilation non bloquée <br/> malgré les erreurs)"]
 
     A --> B
     B --> C
@@ -133,14 +280,19 @@ flowchart TD
 :::
 
 ::: {.column width="50%"}
-2.  Typst (Standard UA-1)
+Typst: Standard UA-1
 
+``` yaml
+format:
+  typst:
+    pdf-standard: ua-1
+```
 
 ```{mermaid}
 flowchart TD
-    A["📄 Document Source Markdown<br/>(YAML: pdf-standard: ua-1)"]
-    B{"🛡️ Validation Native Typst<br/>(Contrôle en temps réel)"}
-    C["❌ Blocage Immédiat de la Compilation<br/>(Aucun PDF généré si titre ou alt-text manquant)"]
+    A["📄 Document source Quarto markdown"]
+    B{"🛡️ Validatio native Typst<br/>(Contrôle en temps réel)"}
+    C["❌ Blocage lors de la Compilation<br/>(Aucun PDF généré si titre ou alt-text manquant)"]
     D["🔍 Validation Externe (veraPDF)<br/>(Contrôle de conformité finale)"]
     E["✅ PDF Conforme produit"]
 
@@ -156,14 +308,31 @@ flowchart TD
     style D fill:#f0fdf4,stroke:#10b981,stroke-width:2px,color:#14532d
     style E fill:#ecfdf5,stroke:#059669,stroke-width:2px,color:#064e3b
 ```
- 
 :::
-::::: 
---- 
+:::::
+
+------------------------------------------------------------------------
+
+## Exemple
+
+``` markdown
+---
+title: Test de la validation d'accessibilité quarto
+format:
+  html: 
+    axe:
+      output: document
+---
+
+Voici une violation des rêgles de contraste: [Texte en contraste insuffisant.]{style="color: #eee"}.
+```
+
+------------------------------------------------------------------------
+
 sources
 https://github.com/orgs/quarto-dev/discussions?discussions_q=is%3Aopen+label%3Aaccessibility+
-Dataviz Accessibility pages / people : https://github.com/dataviza11y/resources
-Whriting Alt-Text : https://medium.com/nightingale/writing-alt-text-for-data-visualization-2a218ef43f81
-Colors : 
-  https://colorbrewer2.org/#type=sequential&scheme=YlGn&n=5
-  https://projects.susielu.com/viz-palette?colors=%5B%22%23e69f00%22%2C%22%2356b4e9%22%2C%22%23009e73%22%2C%22%23f0e442%22%5D&backgroundColor=%22white%22&fontColor=%22black%22&mode=%22deuteranopia%22
+Dataviz Accessibility pages / people :
+https://github.com/dataviza11y/resources Whriting Alt-Text :
+https://medium.com/nightingale/writing-alt-text-for-data-visualization-2a218ef43f81
+Colors : https://colorbrewer2.org/#type=sequential&scheme=YlGn&n=5
+https://projects.susielu.com/viz-palette?colors=%5B%22%23e69f00%22%2C%22%2356b4e9%22%2C%22%23009e73%22%2C%22%23f0e442%22%5D&backgroundColor=%22white%22&fontColor=%22black%22&mode=%22deuteranopia%22
