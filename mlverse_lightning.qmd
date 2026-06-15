@@ -2,26 +2,29 @@
 title: "Les nouveautés de l'écosystème {torch}"
 author:
   - Christophe Regouby^[Airbus S.A.S., christophe.regouby@airbus.com]
-format: revealjs
+format: 
+  revealjs
 indent: true
 lang: fr
 ---
+
+## Le mlverse
+
+<img src="images/all_packages.png" style="position: absolute; top: 20; left: 0; width: 100%; object-fit: cover; z-index: -1;">
+
+[Un univers dédiés à l'apprentissage profond autour de {torch}]{style="position: absolute; bottom: 0; left: 0;"}
 
 ::: notes
 L’univers des packages {torch}, le « mlverse », s’est enrichi durant l’année écoulée grâce à des améliorations considérables des packages historiques, une expansion vers de nouveaux domaines métiers et une adoption croissante par la communauté. Je vous présenterai toute cette richesse lors d'une conférence courte, en démontrant à quel point les échanges lors des précédentes Rencontres R ont favorisé cette expansion. Une véritable invitation à se rencontrer, collaborer et contribuer.
 :::
 
-## Le mlverse
-
-![](images/all_packages.png)
-
-Un univers de packages dédiés au deep learning autour de {torch}
-
 ------------------------------------------------------------------------
 
-## Le mlverse en 2026
+## les nouveaux packages 2026 
 
-la jungle / les groupes (coeur / applications / fondation / services)
+<img src="images/new_packages.png" style="position: absolute; top: 20; left: 0; width: 100%; object-fit: cover; z-index: -1;">
+
+
 
 ------------------------------------------------------------------------
 
@@ -42,8 +45,8 @@ la jungle / les groupes (coeur / applications / fondation / services)
 
 | Tâche | Classification | Détection d'objet | Segmentation sémantique | Sous-titrage |
 |---------------|---------------|---------------|---------------|---------------|
-| nombre de jeux de données | 28 | 45 | 4 | 3 |
-| nombre de modèles | 52 | 14 | 10 |  |
+| jeux de données | 28 | 45 | 4 | 3 |
+| modèles | 52 | 14 | 10 |  |
 
 : les jeux de données par tâche de vision
 
@@ -71,10 +74,18 @@ Infrarouge
 
   ::::: columns
   ::: {.column width="50%"}
-  ![Courbe de Precsison-recall du modèle Tabnet avec case_weight et nn_aum_loss](images/clipboard-2883950942.png)
+  ![Courbe de Precsison-recall: **Tabnet avec `case_weight` et `nn_aum_loss`**](images/clipboard-2883950942.png)
   :::
 
   ::: {.column width="50%"}
-  ![Courbe de Precsison-recall du modèle XGBoost avec case_weight](images/clipboard-380974417.png)
+  ![Courbe de Precsison-recall: **XGBoost avec `case_weight`**](images/clipboard-380974417.png)
   :::
   :::::
+  
+------------------------------------------------------------------------
+
+## En maintenant ?
+
+- un jeu de donnée, un modèle manquant dans {torchvision} ?
+- l'importance des **rencontres** dans les RencontresR
+
