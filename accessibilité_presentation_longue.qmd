@@ -15,6 +15,7 @@ format:
     indent: true
     scrollable: true
     preview-links: auto
+    axe: true
 bibliography: ref.bib
 lang: fr
 editor: 
@@ -24,23 +25,24 @@ editor:
 
 # [R et l'Accessibilité : <br>De la production accessible par la pratique.]{style="color: #eee"}
 
-------------------------------------------------------------------------
-
 # R et l'Accessibilité : <br>[De la production accessible par la pratique.]{.text-primary}
 
 ::: notes
 mise en situation d'accessibilité inversée
 :::
 
-------------------------------------------------------------------------
+## C'est pour qui l'accessibilité ?
 
-::: {.incremental}
+::: incremental
 - **1.5 %** des développeurs sont déficients visuels permanents.
 - **4 %** de l'audience souffre de daltonisme.
 - **Déficience auditive** : acouphènes, environnements bruyants.
-- **Déficience physique** : navigation et accès au travers du *clavier seulement*.
-- **12 %** de la population atteinte de troubles du neuro-développement (troubles "dys").
-- **100 %** de la population face à un trouble temporaire ou situationnel.
+- **Déficience physique** : navigation et accès au travers du *clavier
+  seulement*.
+- **12 %** de la population atteinte de troubles du neuro-développement
+  (troubles "dys").
+- **100 %** de la population fera face à un trouble temporaire ou
+  situationnel.
 :::
 
 ::: notes
@@ -55,123 +57,115 @@ Exemple: future you
 
 ------------------------------------------------------------------------
 
-::: {.callout-tip icon=false}
+::: {.callout-tip icon="false"}
 ## Mettre la priorité sur la communication
-L'accessibilité n'est pas un compromis sur l'esthétique, c'est le moyen le plus efficace d'atteindre ses objectifs ce communication.
+
+L'accessibilité n'est pas un compromis sur l'esthétique, c'est le moyen
+le plus efficace d'atteindre ses objectifs ce communication.
 :::
 
-* 🎯 **Ne pas rater son message**
-* 👥 **Capturer toute son audience**
-* 🧠 **Réduire l'effort psychique** nécessaire à l'appropriation des données
-* 🤝 **Accueillir une communauté** de développeurs inclusive autour d'un package
+- 🎯 **Ne pas rater son message**
+- 👥 **Capturer toute son audience**, ne pas laisser naître un sentiment
+  de rejet.
+- 🧠 **Réduire l'effort psychique** nécessaire à l'appropriation des
+  données présentées.
+- 🤝 **Accueillir une communauté** de développeurs inclusive autour d'un
+  package
 
 ## Les normes {background-color="#f8fafc"}
 
-La directive **(UE) 2019/882** relative aux exigences en matière d'accessibilité applicables aux produits et services, dite **EAA** (*European Accessibility Act*).
+La recommandation du W3C [Accessible Rich Internet Applications (WAI-ARIA) 1.2](https://www.w3.org/TR/wai-aria-1.2/), de juin 2023.
+
+
+La directive **(UE) 2019/882** relative aux exigences en matière
+d'accessibilité applicables aux produits et services, dite **EAA**
+(*European Accessibility Act*).
 
 Adoptée en Europe en avril 2019, publiée en France en Mars 2023.
 
-::: {.columns}
-::: {.column width="60%"}
+:::::: columns
+:::: {.column width="60%"}
 ### Calendrier d'application
-* **Juin 2025** : Obligatoire pour les *nouveaux* produits et services.
-* **Juin 2030** : Obligatoire pour *tous* les produits et services existants.
-:::
 
-::: {.column width="40%"}
+- **Juin 2025** : Obligatoire pour les *nouveaux* produits et services.
+- **Juin 2030** : Obligatoire pour *tous* les produits et services
+  existants.
+::::
+
+:::: {.column width="40%"}
 ### Les Sanctions
-::: {.callout-important}
 ![](images/clipboard-3832219588.png){width="100%"}
-:::
-:::
-:::
+::::
+::::::
 
 ::: notes
 500€ / jour d'astreinte et 10k€ de dommage et intérêt
 :::
-------------------------------------------------------------------------
 
-## Les normes {.small}
+## Agenda
 
-La directive **(UE) 2019/882 relative aux exigences en matière
-d'accessibilité applicables aux produits et services**, dite **EAA** (de
-l'anglais « European Accessibility Act »)
-
-Adoptée en Europe en avril 2019, Publiée en France en Mars 2023. Mise en
-oeuvre
-
-- au plus tard juin 2025 pur les nouveaux produits et services.
-
-- au plus tard en juin 2030 pour tous les produits et services existants
-
-### Les sanctions
-
-![](images/clipboard-3832219588.png){width="409"}
-
-::: notes
-500€ / jour d'astreint et 10k€ dommage et intérêt
+::::: columns
+::: {.column width="50%"}
+- 🎨 Les couleurs
+- 📊 Les graphiques
+- 📋 Les tableaux
 :::
 
-------------------------------------------------------------------------
-
-### Agenda
-
-- les couleurs
-- les graphiques
-- les tableaux
-- le code
-- les applis shiny
-- les documents
-
-------------------------------------------------------------------------
+::: {.column width="50%"}
+- 💻 Le code & le CLI
+- ✨ Les applis Shiny
+- 📄 Les documents (HTML/PDF)
+:::
+:::::
 
 ## L'outillage d'accessibilité
 
-- les lecteur d'écran
+### 1. Assistance active
 
-  ## Les outils de test d'accessibilité
+- Les lecteurs d'écran (NVDA, JAWS, VoiceOver)
 
-  Pour les test d'accessibilité des pages html, un outillage en ligne ou
-  hors ligne:
+### 2. Outils de test (HTML / Pages Web)
 
-  - [WAVE Evaluation Tool](https://wave.webaim.org/)
+::: panel-tabset
+### Extensions Navigateur
 
-  - [BITV Test
-    Toolkit](https://bitvtest.de/test-methodik/web/werkzeugliste#tablesbm)
+- [Firefox Web Developer
+  Add-on](https://addons.mozilla.org/fr/firefox/addon/web-developer/)
+- [Chrome
+  Lighthouse](https://chromewebstore.google.com/detail/lighthouse/blipmdconlkpinefehnmjammfjpmpbjk)
 
-  - [Firefox Web Developer
-    Add-on](https://addons.mozilla.org/de/firefox/addon/web-developer/)
+### Toolkits
 
-  - [Chrome
-    Lighthouse](https://chromewebstore.google.com/detail/lighthouse/blipmdconlkpinefehnmjammfjpmpbjk?hl=de)
+- [WAVE Web Evaluation Tool](https://wave.webaim.org/)
+- Plus d'outils pour les germanophones : [BITV Test
+  Toolkit](https://bitvtest.de/test-methodik/web/werkzeugliste#tablesbm)
+:::
+ ![](images/clipboard-2906010032.png){align="center" width="60%"}
 
-![](images/clipboard-2906010032.png)
+## Les Couleurs
+- **Pièges fréquents** : Mauvais contrastes, information uniquement
+  basée sur la couleur.
+- **Bonnes pratiques** : Valider les ratios de contraste (minimum 4.5:1
+  pour le texte normal).
 
-------------------------------------------------------------------------
+Outils de simulation en action
 
-## Les couleurs
+- [Viz-Palette](https://projects.susielu.com/viz-palette?colors=%5B%22%23e69f00%22%2C%22%2356b4e9%22%2C%22%23009e73%22%2C%22%23f0e442%22%5D&backgroundColor=%22white%22&fontColor=%22black%22&mode=%22none%22)
+  — Idéal pour tester les palettes contre le daltonisme.
+- [ColorBrewer
+  2.0](https://colorbrewer2.org/#type=sequential&scheme=YlGn&n=5) —
+  Sélection de palettes de données filtrables par accessibilité.
 
-- exemple d'erreur
+::: notes
+à partir de viz-palette, on fait un aller-retour vers colorbrewer2 (ou
+pas, puisqu'on peut déja y choisir les palettes compatibles)
+:::
 
-- bonne pratiques
+## Graphiques : Le problème {.smaller}
 
-- outillage en action
-
-  [https://projects.susielu.com/viz-palette](https://projects.susielu.com/viz-palette?colors=%5B%22%23e69f00%22%2C%22%2356b4e9%22%2C%22%23009e73%22%2C%22%23f0e442%22%5D&backgroundColor=%22white%22&fontColor=%22black%22&mode=%22none%22)
-
-  <https://colorbrewer2.org/#type=sequential&scheme=YlGn&n=5>
-
-  ::: notes
-  à partir de viz-palette, on fait un aller-retour vers colorbrewer2 (ou
-  pas, puisqu'on peut déja y choisir les palettes compatibles)
-  :::
-
-------------------------------------------------------------------------
-
-## Graphiques {.smaller}
-
-- ggplot2 a de très bons paramètres par défaut, mais ce n'est pas
-  suffisant :
+`ggplot2` possède de bons paramètres par défaut, mais ils restent
+insuffisants pour l'accessibilité (lignes trop fines, contrastes
+faibles).
 
 ::::: columns
 ::: {.column width="50%"}
@@ -193,7 +187,7 @@ g0
 
 ------------------------------------------------------------------------
 
-### bonnes pratiques : la taille
+### bonnes pratiques : la taille {.smaller}
 
 ::::: columns
 ::: {.column width="50%"}
@@ -215,7 +209,7 @@ g
 
 ------------------------------------------------------------------------
 
-### bonnes pratiques : les couleurs
+### bonnes pratiques : les couleurs {.smaller}
 
 ::::: columns
 ::: {.column width="50%"}
@@ -233,7 +227,7 @@ g
 
 ------------------------------------------------------------------------
 
-### bonnes pratiques : ne pas s'appuyer sur les couleurs
+### bonnes pratiques : ne pas s'appuyer sur les couleurs {.smaller}
 
 ::::: columns
 ::: {.column width="50%"}
@@ -270,13 +264,13 @@ g
 :::
 
 ::: {.column width="50%"}
-\![\](images/clipboard-3856453861.png
+![](images/clipboard-3856453861.png)
 :::
 :::::
 
 ------------------------------------------------------------------------
 
-### bonnes pratiques : les petits multiples
+### bonnes pratiques : les petits multiples {.smaller}
 
 ::::: columns
 ::: {.column width="50%"}
@@ -305,10 +299,14 @@ g2 + facet_wrap(~category) +
 :::
 :::::
 
-------------------------------------------------------------------------
+::: callout-note
+Étude de cas complète
 
-- Le blog complet : Nicola Rennnie Accesssible Linechart :
-  https://nrennie.rbind.io/blog/accessible-line-chart/
+Retrouvez le blog de Nicola Rennie sur la création de graphiques
+linéaires accessibles :
+
+🔗 Nicola Rennie - Accessible Line Chart
+:::
 
 ------------------------------------------------------------------------
 
@@ -346,23 +344,82 @@ car doit profiter à tout le monde.
 | ![](images/clipboard-726440441.png) |
 | ![](images/clipboard-844471837.png) |
 
-### Tableaux
+## Tableaux
 
--\> acccessibility empathy for spreadsheets - exemple d'erreur - bonnes
-pratiques - outillage en action
+:::: columns
+::: {.column width="60%"}
+Mauvaises vs Bonnes Pratiques
 
-------------------------------------------------------------------------
+```         
+Erreur classique : 
+- Tableaux sous forme d'images non lues
+- tableau avec caractères de séparation des colonnes
+- fusion de cellules complexe.
 
-### Shiny
+Règle d'or : 
+- Déclarer explicitement les en-têtes de colonnes et de lignes (<th>).  
+- Eviter la complexité accrue
+```
+:::
+::: {.column width="40%"}
 
-- Le problème :
-  <https://www.jumpingrivers.com/blog/accessible-shiny-standards-wcag/>
+Expérimentation (spreadsheet)
 
-- Une solution {a11yShiny} : Accessible wrappers for popular R
-  [Shiny](https://shiny.posit.co/) UI components, enforcing ARIA
-  attributes and structural requirements in line with [BITV
-  2.0](https://www.barrierefreiheit-dienstekonsolidierung.bund.de/Webs/PB/DE/gesetze-und-richtlinien/bitv2-0/bitv2-0-node.html)
-  and WCAG 2.1 AA.
+[Accessibility Empathy for spreadsheets](https://analysisfunction.civilservice.gov.uk/blog-2/accessibility-empathy-for-spreadsheets/): Penser à l'utilisateur qui navigue cellule par
+cellule au clavier.
+
+:::
+::::
+
+## Applications Shiny
+
+### Le Problème
+Les composants web générés par défaut par Shiny ne respectent pas toujours nativement les critères stricts du WCAG (manque de balises ARIA, navigation clavier brisée).  
+🔗 [Analyse des standards WCAG applicables à Shiny](https://www.jumpingrivers.com/blog/accessible-shiny-standards-wcag/)
+
+### La Solution : `{a11yShiny}`
+Ce package propose des wrappers (enveloppes) accessibles qui forcent le respect des exigences structurelles de la **BITV 2.0** et du **WCAG 2.1 AA** (validation des étiquettes, gestion du focus, contrastes élevés).
+
+---
+
+### Correspondance des fonctions `{a11yShiny}`
+
+| Élément UI | Fonction Native `shiny` / `DT` | Équivalent Accessible `{a11yShiny}` |
+| :--- | :--- | :--- |
+| **Structure globale** | `fluidPage()` | `a11y_fluidPage(lang = "fr", title = "...")` |
+| **Mise en page** | `fluidRow()` / `column()` | `a11y_fluidRow()` / `a11y_column()` |
+| **Bouton** | `actionButton()` | `a11y_actionButton()` |
+| **Listes & Saisie** | `selectInput()` / `numericInput()` | `a11y_selectInput()` / `a11y_numericInput()` |
+| **Tableaux** | `DT::renderDataTable()` | `a11y_renderDataTable()` |
+| **Graphiques** | `renderPlot()` (`ggplot2`) | `a11y_ggplot2_line()` / `a11y_ggplot2_bar()` |
+
+---
+
+### Exemple d'implémentation UI
+
+Remplacer vos appels de structure et d'inputs classiques :
+
+```r
+library(shiny)
+library(a11yShiny)
+
+# Remplacement des fonctions standards par les variantes "a11y_"
+ui <- a11y_fluidPage(
+  lang = "fr",
+  title = "Mon Application Shiny Accessible",
+  
+  a11y_fluidRow(
+    a11y_column(
+      width = 6,
+      a11y_actionButton("refresh", label = "Rafraîchir les données")
+    ),
+    a11y_column(
+      width = 6,
+      a11y_selectInput("choix", label = "Choisir une option", choices = 1:3)
+    )
+  )
+)
+```
 
 ------------------------------------------------------------------------
 
@@ -371,6 +428,10 @@ pratiques - outillage en action
 pour les developpeurs de packages
 
 ### Les messages
+
+- Utiliser {cli} pour formater des messages textuels clairs, fournissant du contexte.
+
+- Éviter de transmettre des informations uniquement par des couleurs (Vert = Succès, Rouge = Erreur) sans ajouter de texte ou symbole explicite (✔, ✖).
 
 ### La documentation (le site web)
 
@@ -388,17 +449,6 @@ outillage en action
 Passer le site web au travers de
 [https://wave.webaim.org](https://wave.webaim.org/).
 
-------------------------------------------------------------------------
-
-## Le CLI
-
-pour les developpeurs de packages
-
-- exemple d'erreur
-
-- bonne pratiques
-
-- outillage en action
 
 ## La production de documents
 
@@ -529,3 +579,4 @@ https://medium.com/nightingale/writing-alt-text-for-data-visualization-2a218ef43
 Colors : https://colorbrewer2.org/#type=sequential&scheme=YlGn&n=5
 https://projects.susielu.com/viz-palette?colors=%5B%22%23e69f00%22%2C%22%2356b4e9%22%2C%22%23009e73%22%2C%22%23f0e442%22%5D&backgroundColor=%22white%22&fontColor=%22black%22&mode=%22deuteranopia%22
 :::
+
