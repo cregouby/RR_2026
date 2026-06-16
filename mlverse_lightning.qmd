@@ -3,7 +3,8 @@ title: "Les nouveautés de l'écosystème {torch}"
 author:
   - Christophe Regouby^[Airbus S.A.S., christophe.regouby@airbus.com]
 format: 
-  revealjs
+  revealjs:
+    pdf-separate-fragments: true
 indent: true
 lang: fr
 ---
@@ -39,6 +40,19 @@ L’univers des packages {torch}, le « mlverse », s’est enrichi durant l’a
 ``` R
 remotes::install_github("mlverse/cudatoolkit/cuda12.8")
 ```
+------------------------------------------------------------------------
+
+## Les nouveauté 2026 : {torch}
+
+- libtorch 2.8 (équivalent de pytorch 2.8)
+- performance
+- `torch_scaled_dot_product_attention()` pour la performance des transformers.
+- `nn_aum_loss()` pour la classification binaire déséquilibrée
+- `install_torch_sitrep()` pour un diagnostique profond.
+- les packages de runtime cudatoolkit
+``` R
+remotes::install_github("mlverse/cudatoolkit/cuda12.8")
+```
 
 ------------------------------------------------------------------------
 
@@ -56,17 +70,11 @@ remotes::install_github("mlverse/cudatoolkit/cuda12.8")
 
 ------------------------------------------------------------------------
 
-Écologie
+<img src="images/roboflow_collection_1.png" style="position: absolute; top: 20; left: 0; width: 100%; object-fit: cover; z-index: -1;">
 
-Biologie
+------------------------------------------------------------------------
 
-Biologie marine
-
-Médical
-
-Documents
-
-Infrarouge
+<img src="images/roboflow_collection_2.png" style="position: absolute; top: 20; left: 0; width: 100%; object-fit: cover; z-index: -1;">
 
 ------------------------------------------------------------------------
 

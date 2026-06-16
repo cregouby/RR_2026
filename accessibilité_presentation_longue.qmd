@@ -1,9 +1,20 @@
 ---
-title: "R et l'Accessibilité : De la production accessible par la pratique"
+title: "a11y 101"
 author:
-  - Christophe Regouby^[Airbus S.A.S., christophe.regouby@airbus.com]
-format: revealjs
-indent: true
+  - name: Christophe Regouby
+    affiliation: Airbus
+format: 
+  revealjs:
+    theme: [default]
+    transition: fade
+    slide-number: true
+    show-slide-number: all
+    controls: true
+    width: 1280
+    height: 720
+    indent: true
+    scrollable: true
+    preview-links: auto
 bibliography: ref.bib
 lang: fr
 editor: 
@@ -11,21 +22,26 @@ editor:
     wrap: 72
 ---
 
+# [R et l'Accessibilité : <br>De la production accessible par la pratique.]{style="color: #eee"}
+
 ------------------------------------------------------------------------
 
-### C'est quoi l'accessibilité
+# R et l'Accessibilité : <br>[De la production accessible par la pratique.]{.text-primary}
 
-Pour qui ?
+::: notes
+mise en situation d'accessibilité inversée
+:::
 
-- 1.5 % des développeurs sont déficients visuels
+------------------------------------------------------------------------
 
-- 4 % de l'audience souffre de daltonisme
-
-- déficience auditive : acouphènes
-
-- déficience physique : accès avec un clavier seulement
-
-- 12% troubles du neuro-développement (troubles "dis")
+::: {.incremental}
+- **1.5 %** des développeurs sont déficients visuels permanents.
+- **4 %** de l'audience souffre de daltonisme.
+- **Déficience auditive** : acouphènes, environnements bruyants.
+- **Déficience physique** : navigation et accès au travers du *clavier seulement*.
+- **12 %** de la population atteinte de troubles du neuro-développement (troubles "dys").
+- **100 %** de la population face à un trouble temporaire ou situationnel.
+:::
 
 ::: notes
 Exemple: les lunettes
@@ -39,37 +55,62 @@ Exemple: future you
 
 ------------------------------------------------------------------------
 
-Pourquoi
-
-\- ne pas rater son message
-
-\- capturer toute son audience
-
-\- effort psychique pour l'appropriation
-
-\- accueil d'une communauté de développeurs sur un package
-
-::: notes
-On va prouver que ce n'est pas un compromis sur l'esthétique, mais au
-contraire atteindre ses objectifs et mettre la priorité sur la
-communication.
+::: {.callout-tip icon=false}
+## Mettre la priorité sur la communication
+L'accessibilité n'est pas un compromis sur l'esthétique, c'est le moyen le plus efficace d'atteindre ses objectifs ce communication.
 :::
 
+* 🎯 **Ne pas rater son message**
+* 👥 **Capturer toute son audience**
+* 🧠 **Réduire l'effort psychique** nécessaire à l'appropriation des données
+* 🤝 **Accueillir une communauté** de développeurs inclusive autour d'un package
+
+## Les normes {background-color="#f8fafc"}
+
+La directive **(UE) 2019/882** relative aux exigences en matière d'accessibilité applicables aux produits et services, dite **EAA** (*European Accessibility Act*).
+
+Adoptée en Europe en avril 2019, publiée en France en Mars 2023.
+
+::: {.columns}
+::: {.column width="60%"}
+### Calendrier d'application
+* **Juin 2025** : Obligatoire pour les *nouveaux* produits et services.
+* **Juin 2030** : Obligatoire pour *tous* les produits et services existants.
+:::
+
+::: {.column width="40%"}
+### Les Sanctions
+::: {.callout-important}
+![](images/clipboard-3832219588.png){width="100%"}
+:::
+:::
+:::
+
+::: notes
+500€ / jour d'astreinte et 10k€ de dommage et intérêt
+:::
 ------------------------------------------------------------------------
 
-## Les normes
+## Les normes {.small}
 
-La **directive (UE) 2019/882 relative aux exigences en matière
+La directive **(UE) 2019/882 relative aux exigences en matière
 d'accessibilité applicables aux produits et services**, dite **EAA** (de
-l'[anglais](https://fr.wikipedia.org/wiki/Anglais "Anglais") « European
-Accessibility Act »)
+l'anglais « European Accessibility Act »)
 
-Adoptée en europe en avril 2019, Publiée en France en Mars 2023 mise en
+Adoptée en Europe en avril 2019, Publiée en France en Mars 2023. Mise en
 oeuvre
 
 - au plus tard juin 2025 pur les nouveaux produits et services.
 
-- au plus tard en juin 2030 pour tous les produits et services anciens
+- au plus tard en juin 2030 pour tous les produits et services existants
+
+### Les sanctions
+
+![](images/clipboard-3832219588.png){width="409"}
+
+::: notes
+500€ / jour d'astreint et 10k€ dommage et intérêt
+:::
 
 ------------------------------------------------------------------------
 
@@ -88,16 +129,27 @@ oeuvre
 
 - les lecteur d'écran
 
-- en-ligne : Passer le site web au travers de
-  [https://wave.webaim.org](https://wave.webaim.org/).
+  ## Les outils de test d'accessibilité
 
-- hors-ligne: l'outil lighthouse dans chrome developpeur tools
+  Pour les test d'accessibilité des pages html, un outillage en ligne ou
+  hors ligne:
+
+  - [WAVE Evaluation Tool](https://wave.webaim.org/)
+
+  - [BITV Test
+    Toolkit](https://bitvtest.de/test-methodik/web/werkzeugliste#tablesbm)
+
+  - [Firefox Web Developer
+    Add-on](https://addons.mozilla.org/de/firefox/addon/web-developer/)
+
+  - [Chrome
+    Lighthouse](https://chromewebstore.google.com/detail/lighthouse/blipmdconlkpinefehnmjammfjpmpbjk?hl=de)
 
 ![](images/clipboard-2906010032.png)
 
 ------------------------------------------------------------------------
 
-### Les couleurs
+## Les couleurs
 
 - exemple d'erreur
 
@@ -106,6 +158,7 @@ oeuvre
 - outillage en action
 
   [https://projects.susielu.com/viz-palette](https://projects.susielu.com/viz-palette?colors=%5B%22%23e69f00%22%2C%22%2356b4e9%22%2C%22%23009e73%22%2C%22%23f0e442%22%5D&backgroundColor=%22white%22&fontColor=%22black%22&mode=%22none%22)
+
   <https://colorbrewer2.org/#type=sequential&scheme=YlGn&n=5>
 
   ::: notes
@@ -115,11 +168,146 @@ oeuvre
 
 ------------------------------------------------------------------------
 
-### Graphiques
+## Graphiques {.smaller}
 
-- exemple d'erreur
-- bonnes pratiques
-- outillage en action {} Nicola Rennnie Accesssible Linechart :
+- ggplot2 a de très bons paramètres par défaut, mais ce n'est pas
+  suffisant :
+
+::::: columns
+::: {.column width="50%"}
+``` r
+theme_set(theme_grey(base_size = 11))
+g0 <- ggplot(
+  data = plot_data,
+  mapping = aes(x = x, y = y, colour = category)
+) +
+  geom_line()
+g0
+```
+:::
+
+::: {.column width="50%"}
+![](images/clipboard-2252838787.png)
+:::
+:::::
+
+------------------------------------------------------------------------
+
+### bonnes pratiques : la taille
+
+::::: columns
+::: {.column width="50%"}
+``` r
+theme_set(theme_grey(base_size = 16))
+g <- ggplot(
+  data = plot_data,
+  mapping = aes(x = x, y = y, colour = category)
+) +
+  geom_line(linewidth = 2)
+g
+```
+:::
+
+::: {.column width="50%"}
+![](images/clipboard-784798944.png)
+:::
+:::::
+
+------------------------------------------------------------------------
+
+### bonnes pratiques : les couleurs
+
+::::: columns
+::: {.column width="50%"}
+``` r
+theme_set(theme_minimal(base_size = 16))
+g <- g + scale_colour_manual(values = okabeito)
+g
+```
+:::
+
+::: {.column width="50%"}
+![](images/clipboard-2902244056.png)
+:::
+:::::
+
+------------------------------------------------------------------------
+
+### bonnes pratiques : ne pas s'appuyer sur les couleurs
+
+::::: columns
+::: {.column width="50%"}
+``` r
+g <- g +
+  geom_point(
+    data = slice_max(plot_data, x),
+    size = 4
+  ) +
+  new_scale_colour() +
+  scale_colour_manual(values = new_palette) +
+  geom_text(
+    data = slice_max(plot_data, x),
+    mapping = aes(label = category, colour = category),
+    hjust = -0.1,
+    size.unit = "pt",
+    size = 14
+  ) +
+  scale_x_date(
+    date_labels = "%b",
+    breaks = seq(
+      as.Date("01-01-2024", tryFormats = "%d-%m-%Y"),
+      length.out = 4,
+      by = "3 months"
+    ),
+    limits = c(
+      as.Date("01-01-2024", tryFormats = "%d-%m-%Y"),
+      as.Date("01-02-2025", tryFormats = "%d-%m-%Y")
+    )
+  ) +
+  theme(legend.position = "none")
+g
+```
+:::
+
+::: {.column width="50%"}
+\![\](images/clipboard-3856453861.png
+:::
+:::::
+
+------------------------------------------------------------------------
+
+### bonnes pratiques : les petits multiples
+
+::::: columns
+::: {.column width="50%"}
+``` r
+theme_set(theme_bw(base_size = 16))
+g2 + facet_wrap(~category) +
+  gghighlight(use_direct_label = FALSE) +
+  scale_x_date(
+    date_labels = "%b",
+    breaks = seq(
+      as.Date("01-01-2024", tryFormats = "%d-%m-%Y"),
+      length.out = 4,
+      by = "3 months"
+    ),
+    limits = c(
+      as.Date("01-01-2024", tryFormats = "%d-%m-%Y"),
+      as.Date("15-12-2024", tryFormats = "%d-%m-%Y")
+    )
+  ) +
+  theme(axis.title = element_blank())
+```
+:::
+
+::: {.column width="50%"}
+![](images/clipboard-2723811829.png)
+:::
+:::::
+
+------------------------------------------------------------------------
+
+- Le blog complet : Nicola Rennnie Accesssible Linechart :
   https://nrennie.rbind.io/blog/accessible-line-chart/
 
 ------------------------------------------------------------------------
@@ -128,7 +316,7 @@ oeuvre
 
 ![](images/clipboard-2580408446.png){fig-alt="Le format des alt-text pour les dataviz en 4 informations clefs. Type de graphique, Jeu de données, raison du graphique, lien vers les sources."}
 
-Type de graphique : Il est nécessaire de nomer la famille de graphique,
+Type de graphique : Il est nécessaire de nommer la famille de graphique,
 pour donner le contexte à la suite du texte alternatif
 
 ex: un diagramme à barres
@@ -152,13 +340,11 @@ car doit profiter à tout le monde.
 
 ![](images/clipboard-1732821648.png)
 
-Plus difficile
-
-![](images/clipboard-726440441.png)
-
-![](images/clipboard-844471837.png)
-
-------------------------------------------------------------------------
+|                                     |
+|:------------------------------------|
+| Plus difficile                      |
+| ![](images/clipboard-726440441.png) |
+| ![](images/clipboard-844471837.png) |
 
 ### Tableaux
 
@@ -172,7 +358,7 @@ pratiques - outillage en action
 - Le problème :
   <https://www.jumpingrivers.com/blog/accessible-shiny-standards-wcag/>
 
-- Solution {a11yShiny} : Accessible wrappers for popular R
+- Une solution {a11yShiny} : Accessible wrappers for popular R
   [Shiny](https://shiny.posit.co/) UI components, enforcing ARIA
   attributes and structural requirements in line with [BITV
   2.0](https://www.barrierefreiheit-dienstekonsolidierung.bund.de/Webs/PB/DE/gesetze-und-richtlinien/bitv2-0/bitv2-0-node.html)
@@ -206,8 +392,13 @@ Passer le site web au travers de
 
 ## Le CLI
 
-pour les developpeurs de packages - exemple d'erreur - bonne pratiques -
-outillage en action
+pour les developpeurs de packages
+
+- exemple d'erreur
+
+- bonne pratiques
+
+- outillage en action
 
 ## La production de documents
 
@@ -329,6 +520,7 @@ Voici une violation des rêgles de contraste: [Texte en contraste insuffisant.]{
 
 ------------------------------------------------------------------------
 
+::: notes
 sources
 https://github.com/orgs/quarto-dev/discussions?discussions_q=is%3Aopen+label%3Aaccessibility+
 Dataviz Accessibility pages / people :
@@ -336,3 +528,4 @@ https://github.com/dataviza11y/resources Whriting Alt-Text :
 https://medium.com/nightingale/writing-alt-text-for-data-visualization-2a218ef43f81
 Colors : https://colorbrewer2.org/#type=sequential&scheme=YlGn&n=5
 https://projects.susielu.com/viz-palette?colors=%5B%22%23e69f00%22%2C%22%2356b4e9%22%2C%22%23009e73%22%2C%22%23f0e442%22%5D&backgroundColor=%22white%22&fontColor=%22black%22&mode=%22deuteranopia%22
+:::
