@@ -31,6 +31,12 @@ editor:
 mise en situation d'accessibilité inversée
 :::
 
+------------------------------------------------------------------------
+
+![](images/clipboard-1733121037.png)
+
+------------------------------------------------------------------------
+
 ## C'est pour qui l'accessibilité ?
 
 ::: incremental
@@ -58,7 +64,7 @@ Exemple: future you
 ------------------------------------------------------------------------
 
 ::: {.callout-tip icon="false"}
-## Mettre la priorité sur la communication
+## Un objectif de communication
 
 L'accessibilité n'est pas un compromis sur l'esthétique, c'est le moyen
 le plus efficace d'atteindre ses objectifs ce communication.
@@ -310,9 +316,11 @@ linéaires accessibles :
 
 ------------------------------------------------------------------------
 
-### Alt-text
+## Alt-text
 
 ![](images/clipboard-2580408446.png){fig-alt="Le format des alt-text pour les dataviz en 4 informations clefs. Type de graphique, Jeu de données, raison du graphique, lien vers les sources."}
+
+## Alt-text
 
 Type de graphique : Il est nécessaire de nommer la famille de graphique,
 pour donner le contexte à la suite du texte alternatif
@@ -429,26 +437,20 @@ pour les developpeurs de packages
 
 ### Les messages
 
-- Utiliser {cli} pour formater des messages textuels clairs, fournissant du contexte.
+- Utiliser {cli} pour formater des messages textuels clairs, en fournissant du contexte.
 
-- Éviter de transmettre des informations uniquement par des couleurs (Vert = Succès, Rouge = Erreur) sans ajouter de texte ou symbole explicite (✔, ✖).
+- Pas d'information relayée par les couleurs (Vert = Succès, Rouge = Erreur) sans ajouter de texte ou symbole explicite (✔, ✖).
 
-### La documentation (le site web)
+## La documentation (le site web)
 
 exemple d'erreur sur la publication du site web de documentation avec
 {pkgdown}
 
 ![](images/clipboard-293311766.png)
 
-bonne pratiques
+Assurer la cohérence des figures,  des styles, des couleurs.
 
-Cohérence des figures, des styles, des couleurs.
-
-outillage en action
-
-Passer le site web au travers de
-[https://wave.webaim.org](https://wave.webaim.org/).
-
+Minimiser la surprise du lecteur
 
 ## La production de documents
 
