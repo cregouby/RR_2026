@@ -2,21 +2,14 @@
 title: "a11y 101"
 author:
   - name: Christophe Regouby
-    affiliation: Airbus
 format: 
   revealjs:
-    theme: [default]
     transition: fade
-    slide-number: true
-    show-slide-number: all
-    controls: true
     width: 1280
     height: 720
     indent: true
     scrollable: true
     preview-links: auto
-    axe: true
-bibliography: ref.bib
 lang: fr
 editor: 
   markdown: 
@@ -31,11 +24,6 @@ editor:
 mise en situation d'accessibilité inversée
 :::
 
-------------------------------------------------------------------------
-
-![](images/clipboard-1733121037.png)
-
-------------------------------------------------------------------------
 
 ## C'est pour qui l'accessibilité ?
 
@@ -322,6 +310,8 @@ linéaires accessibles :
 
 ## Alt-text
 
+package {alt-text} (TBC)
+
 Type de graphique : Il est nécessaire de nommer la famille de graphique,
 pour donner le contexte à la suite du texte alternatif
 
@@ -561,6 +551,7 @@ flowchart TD
 ``` markdown
 ---
 title: Test de la validation d'accessibilité quarto
+
 format:
   html: 
     axe:
@@ -570,7 +561,13 @@ format:
 Voici une violation des rêgles de contraste: [Texte en contraste insuffisant.]{style="color: #eee"}.
 ```
 
-------------------------------------------------------------------------
+package {verapdf} (TBC)
+
+# Questions & partages
+
+
+
+https://cregouby.github.io/RR_2026/
 
 ::: notes
 sources

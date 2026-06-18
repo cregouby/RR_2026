@@ -7,4 +7,4 @@ modele_*
 modeles_*
 *.html
 images/**
-libs/*
+*/libs/*
