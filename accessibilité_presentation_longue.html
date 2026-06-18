@@ -6,10 +6,7 @@
 <script src="accessibilité_presentation_longue_files/libs/quarto-html/tippy.umd.min.js"></script>
 <link href="accessibilité_presentation_longue_files/libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="accessibilité_presentation_longue_files/libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="accessibilité_presentation_longue_files/libs/quarto-html/quarto-syntax-highlighting-5947b73a06bce04bf1d622ae23e1ec5b.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="accessibilité_presentation_longue_files/libs/quarto-axe/axe-check.js" type="module"></script>
-<script id="quarto-axe-checker-options" type="text/plain">dHJ1ZQ==</script>
-<link href="accessibilité_presentation_longue_files/libs/reveal-theme/reveal-theme-bb4660afe7c71de2b3b00bcfb9603d11.min.css" rel="stylesheet" append-hash="true" data-mode="light"><meta charset="utf-8">
+<link href="accessibilité_presentation_longue_files/libs/quarto-html/quarto-syntax-highlighting-5947b73a06bce04bf1d622ae23e1ec5b.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.10.11">
 
   <meta name="author" content="Christophe Regouby">
@@ -514,6 +511,7 @@ Christophe Regouby
 <img data-src="images/clipboard-2580408446.png" alt="Le format des alt-text pour les dataviz en 4 informations clefs. Type de graphique, Jeu de données, raison du graphique, lien vers les sources." class="r-stretch"></section>
 <section id="alt-text-1" class="slide level2">
 <h2>Alt-text</h2>
+<p>package {alt-text} (TBC)</p>
 <p>Type de graphique : Il est nécessaire de nommer la famille de graphique, pour donner le contexte à la suite du texte alternatif</p>
 <p>ex: un diagramme à barres</p>
 <p>Pour le nom des diagrammes, consultez le guide de datavisualization de toulouse-dataviz.fr</p>
@@ -756,16 +754,19 @@ Règle d'or :
 <h2>Exemple</h2>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb13-1"><a href=""></a><span class="co">---</span></span>
 <span id="cb13-2"><a href=""></a><span class="an">title:</span><span class="co"> Test de la validation d'accessibilité quarto</span></span>
-<span id="cb13-3"><a href=""></a><span class="an">format:</span></span>
-<span id="cb13-4"><a href=""></a><span class="co">  html: </span></span>
-<span id="cb13-5"><a href=""></a><span class="co">    axe:</span></span>
-<span id="cb13-6"><a href=""></a><span class="co">      output: document</span></span>
-<span id="cb13-7"><a href=""></a><span class="co">---</span></span>
-<span id="cb13-8"><a href=""></a></span>
-<span id="cb13-9"><a href=""></a>Voici une violation des rêgles de contraste: <span class="co">[</span><span class="ot">Texte en contraste insuffisant.</span><span class="co">]</span>{style="color: #eee"}.</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
-</section>
-<section class="slide level2">
-
+<span id="cb13-3"><a href=""></a></span>
+<span id="cb13-4"><a href=""></a><span class="an">format:</span></span>
+<span id="cb13-5"><a href=""></a><span class="co">  html: </span></span>
+<span id="cb13-6"><a href=""></a><span class="co">    axe:</span></span>
+<span id="cb13-7"><a href=""></a><span class="co">      output: document</span></span>
+<span id="cb13-8"><a href=""></a><span class="co">---</span></span>
+<span id="cb13-9"><a href=""></a></span>
+<span id="cb13-10"><a href=""></a>Voici une violation des rêgles de contraste: <span class="co">[</span><span class="ot">Texte en contraste insuffisant.</span><span class="co">]</span>{style="color: #eee"}.</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+<p>package {verapdf} (TBC)</p>
+</section></section>
+<section id="questions-partages" class="title-slide slide level1 center">
+<h1>Questions &amp; partages</h1>
+<p>https://cregouby.github.io/RR_2026/</p>
 <aside class="notes">
 <p>sources https://github.com/orgs/quarto-dev/discussions?discussions_q=is%3Aopen+label%3Aaccessibility+ Dataviz Accessibility pages / people : https://github.com/dataviza11y/resources Whriting Alt-Text : https://medium.com/nightingale/writing-alt-text-for-data-visualization-2a218ef43f81 Colors : https://colorbrewer2.org/#type=sequential&amp;scheme=YlGn&amp;n=5 https://projects.susielu.com/viz-palette?colors=%5B%22%23e69f00%22%2C%22%2356b4e9%22%2C%22%23009e73%22%2C%22%23f0e442%22%5D&amp;backgroundColor=%22white%22&amp;fontColor=%22black%22&amp;mode=%22deuteranopia%22</p>
 <style type="text/css">
@@ -780,7 +781,7 @@ Règle d'or :
           display:block!important;
       }</style></aside>
 
-</section></section>
+</section>
     </div>
   <div class="quarto-auto-generated-content" style="display: none;">
 <div class="footer footer-default">
@@ -809,7 +810,7 @@ Règle d'or :
       // Full list of configuration options available at:
       // https://revealjs.com/config/
       Reveal.initialize({
-'controlsAuto': false,
+'controlsAuto': true,
 'previewLinksAuto': true,
 'pdfSeparateFragments': false,
 'autoAnimateEasing': "ease",
@@ -820,7 +821,7 @@ Règle d'or :
 'smaller': false,
  
         // Display controls in the bottom right corner
-        controls: true,
+        controls: false,
 
         // Help the user learn the controls by providing hints, for example by
         // bouncing the down arrow when they first encounter a vertical slide
@@ -837,7 +838,7 @@ Règle d'or :
         progress: true,
 
         // Display the page number of the current slide
-        slideNumber: 'c/t',
+        slideNumber: false,
 
         // 'all', 'print', or 'speaker'
         showSlideNumber: 'all',
