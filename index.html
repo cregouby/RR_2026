@@ -98,7 +98,7 @@
     code span.vs { color: #20794d; } /* VerbatimString */
     code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
-  <link rel="stylesheet" href="accessibilité_presentation_longue_files/libs/revealjs/dist/theme/quarto-2740581606dc327e82f18f789b69d8a0.css">
+  <link rel="stylesheet" href="accessibilité_presentation_longue_files/libs/revealjs/dist/theme/quarto-113177635b68cb46286712bff2e7b5b1.css">
   <link href="accessibilité_presentation_longue_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="accessibilité_presentation_longue_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="accessibilité_presentation_longue_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -326,11 +326,11 @@ Christophe Regouby
 </ul>
 </div></div>
 </section>
-<section id="loutillage-daccessibilité" class="slide level2">
+<section id="loutillage-daccessibilité" class="slide level2 smaller">
 <h2>L’outillage d’accessibilité</h2>
 <h3 id="assistance-active">1. Assistance active</h3>
 <ul>
-<li>Les lecteurs d’écran (NVDA, JAWS, VoiceOver)</li>
+<li>Les lecteurs d’écran : NVDA (MS-Windows), JAWS (Linux), VoiceOver (MacOS)</li>
 </ul>
 <h3 id="outils-de-test-html-pages-web">2. Outils de test (HTML / Pages Web)</h3>
 <div class="panel-tabset">
@@ -350,18 +350,23 @@ Christophe Regouby
 </div>
 </div>
 </div>
-
-<img data-src="images/clipboard-2906010032.png" style="width:60.0%" data-align="center" class="r-stretch"></section>
+<p><img data-src="images/clipboard-2906010032.png" style="width:60.0%" data-align="center"></p>
+</section>
 <section id="les-couleurs" class="slide level2">
 <h2>Les Couleurs</h2>
 <ul>
 <li><strong>Pièges fréquents</strong> : Mauvais contrastes, information uniquement basée sur la couleur.</li>
-<li><strong>Bonnes pratiques</strong> : Valider les ratios de contraste (minimum 4.5:1 pour le texte normal).</li>
+<li><strong>Bonnes pratiques</strong> : Valider les ratios de contraste:
+<ul>
+<li>minimum 4,5:1 pour le texte normal.</li>
+<li>minimum 3:1 pour les éléments graphiques significatifs.</li>
+</ul></li>
 </ul>
 <p>Outils de simulation en action</p>
 <ul>
-<li><a href="https://projects.susielu.com/viz-palette?colors=%5B%22%23e69f00%22%2C%22%2356b4e9%22%2C%22%23009e73%22%2C%22%23f0e442%22%5D&amp;backgroundColor=%22white%22&amp;fontColor=%22black%22&amp;mode=%22none%22">Viz-Palette</a> — Idéal pour tester les palettes contre le daltonisme.</li>
-<li><a href="https://colorbrewer2.org/#type=sequential&amp;scheme=YlGn&amp;n=5">ColorBrewer 2.0</a> — Sélection de palettes de données filtrables par accessibilité.</li>
+<li><a href="https://www.vis4.net/palettes/#/9%7Cd%7C00429d,96ffea,ffffe0%7Cffffe0,ff005e,93003a%7C0%7C1">viz4.net/palettes</a></li>
+<li><a href="https://colorbrewer2.org/#type=sequential&amp;scheme=YlGn&amp;n=5">ColorBrewer 2.0</a> — Sélection de palettes de couleur par usage, pour l’accessibilité.</li>
+<li>…</li>
 </ul>
 <aside class="notes">
 <p>à partir de viz-palette, on fait un aller-retour vers colorbrewer2 (ou pas, puisqu’on peut déja y choisir les palettes compatibles)</p>
@@ -498,19 +503,25 @@ Christophe Regouby
 </div>
 </div>
 </section>
-<section id="alt-text" class="slide level2">
-<h2>Alt-text</h2>
+<section id="alt-text-pour-les-graphiques" class="slide level2">
+<h2>Alt-text pour les graphiques</h2>
+<p><img data-src="images/clipboard-2580408446.png" alt="Le format des alt-text pour les dataviz en 4 informations clefs. Type de graphique, Jeu de données, raison du graphique, lien vers les sources."></p>
+</section>
+<section class="slide level2">
 
-<img data-src="images/clipboard-2580408446.png" alt="Le format des alt-text pour les dataviz en 4 informations clefs. Type de graphique, Jeu de données, raison du graphique, lien vers les sources." class="r-stretch"></section>
-<section id="alt-text-1" class="slide level2">
-<h2>Alt-text</h2>
-<p>package {alt-text} (TBC)</p>
-<p>Type de graphique : Il est nécessaire de nommer la famille de graphique, pour donner le contexte à la suite du texte alternatif</p>
-<p>ex: un diagramme à barres</p>
-<p>Pour le nom des diagrammes, consultez le guide de datavisualization de toulouse-dataviz.fr</p>
-<p>Jeu de données : Quelles données sont présentes dans le graphique ? les variables des axes x et y le plus généralement</p>
-<p>Raison de la présence du graphique: Pourquoi avoir inclus ce graphique, que fait il apparaître : une mention de chaque information visuelle, qui indique quoi regarder.</p>
-<p>Lien vers les sources : à inclure dans le texte, pas dans l’alt-text, car doit profiter à tout le monde.</p>
+<p>Le package {ggalttext} fait la moitié du chemin :</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href=""></a><span class="fu">install.packages</span>(<span class="st">"ggalttext"</span>, <span class="at">repos =</span> <span class="fu">c</span>(<span class="st">"https://y-sunflower.r-universe.dev"</span>))</span>
+<span id="cb6-2"><a href=""></a><span class="fu">library</span>(ggalttext)</span>
+<span id="cb6-3"><a href=""></a>g2 <span class="ot">&lt;-</span> g2 <span class="sc">+</span> </span>
+<span id="cb6-4"><a href=""></a>  <span class="fu">xlab</span>(<span class="st">"Mois de l'année"</span>) <span class="sc">+</span> </span>
+<span id="cb6-5"><a href=""></a>  <span class="fu">ylab</span>(<span class="st">"Résultat (%)"</span> )</span>
+<span id="cb6-6"><a href=""></a><span class="fu">generate_alt_text</span>(plot, <span class="at">lang=</span><span class="st">"fr"</span>)</span>
+<span id="cb6-7"><a href=""></a>[<span class="dv">1</span>] <span class="st">"Graphique en lignes de résultat en (%) en fonction du mois de l'année."</span></span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Type de graphique</strong> : Il est nécessaire de nommer la famille de graphique, pour donner le contexte à la suite du texte alternatif. ex: <em>un diagramme à barres</em></p>
+<p>Pour le nom des diagrammes, consultez le guide de datavisualization de <a href="https://toulouse-dataviz.notion.site/4cea244c76d0407b9722d300e798a3c2?v=f3b7a520de214623a766a5b68456097b">toulouse-dataviz.fr</a></p>
+<p><strong>Jeu de données</strong> : Quelles données sont présentes dans le graphique ? les variables des axes x et y le plus généralement</p>
+<p><strong>Raison de la présence du graphique</strong>: Pourquoi avoir inclus ce graphique, que fait il apparaître : une mention de chaque information visuelle, qui indique quoi regarder.</p>
+<p><strong>Lien vers les sources</strong> : à inclure dans le texte, pas dans l’alt-text, pour en faire profiter à tout le monde.</p>
 </section>
 <section class="slide level2">
 
@@ -610,25 +621,25 @@ Règle d'or :
 
 <h3 id="exemple-dimplémentation-ui">Exemple d’implémentation UI</h3>
 <p>Remplacer vos appels de structure et d’inputs classiques :</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href=""></a><span class="fu">library</span>(shiny)</span>
-<span id="cb7-2"><a href=""></a><span class="fu">library</span>(a11yShiny)</span>
-<span id="cb7-3"><a href=""></a></span>
-<span id="cb7-4"><a href=""></a><span class="co"># Remplacement des fonctions standards par les variantes "a11y_"</span></span>
-<span id="cb7-5"><a href=""></a>ui <span class="ot">&lt;-</span> <span class="fu">a11y_fluidPage</span>(</span>
-<span id="cb7-6"><a href=""></a>  <span class="at">lang =</span> <span class="st">"fr"</span>,</span>
-<span id="cb7-7"><a href=""></a>  <span class="at">title =</span> <span class="st">"Mon Application Shiny Accessible"</span>,</span>
-<span id="cb7-8"><a href=""></a>  </span>
-<span id="cb7-9"><a href=""></a>  <span class="fu">a11y_fluidRow</span>(</span>
-<span id="cb7-10"><a href=""></a>    <span class="fu">a11y_column</span>(</span>
-<span id="cb7-11"><a href=""></a>      <span class="at">width =</span> <span class="dv">6</span>,</span>
-<span id="cb7-12"><a href=""></a>      <span class="fu">a11y_actionButton</span>(<span class="st">"refresh"</span>, <span class="at">label =</span> <span class="st">"Rafraîchir les données"</span>)</span>
-<span id="cb7-13"><a href=""></a>    ),</span>
-<span id="cb7-14"><a href=""></a>    <span class="fu">a11y_column</span>(</span>
-<span id="cb7-15"><a href=""></a>      <span class="at">width =</span> <span class="dv">6</span>,</span>
-<span id="cb7-16"><a href=""></a>      <span class="fu">a11y_selectInput</span>(<span class="st">"choix"</span>, <span class="at">label =</span> <span class="st">"Choisir une option"</span>, <span class="at">choices =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>)</span>
-<span id="cb7-17"><a href=""></a>    )</span>
-<span id="cb7-18"><a href=""></a>  )</span>
-<span id="cb7-19"><a href=""></a>)</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href=""></a><span class="fu">library</span>(shiny)</span>
+<span id="cb8-2"><a href=""></a><span class="fu">library</span>(a11yShiny)</span>
+<span id="cb8-3"><a href=""></a></span>
+<span id="cb8-4"><a href=""></a><span class="co"># Remplacement des fonctions standards par les variantes "a11y_"</span></span>
+<span id="cb8-5"><a href=""></a>ui <span class="ot">&lt;-</span> <span class="fu">a11y_fluidPage</span>(</span>
+<span id="cb8-6"><a href=""></a>  <span class="at">lang =</span> <span class="st">"fr"</span>,</span>
+<span id="cb8-7"><a href=""></a>  <span class="at">title =</span> <span class="st">"Mon Application Shiny Accessible"</span>,</span>
+<span id="cb8-8"><a href=""></a>  </span>
+<span id="cb8-9"><a href=""></a>  <span class="fu">a11y_fluidRow</span>(</span>
+<span id="cb8-10"><a href=""></a>    <span class="fu">a11y_column</span>(</span>
+<span id="cb8-11"><a href=""></a>      <span class="at">width =</span> <span class="dv">6</span>,</span>
+<span id="cb8-12"><a href=""></a>      <span class="fu">a11y_actionButton</span>(<span class="st">"refresh"</span>, <span class="at">label =</span> <span class="st">"Rafraîchir les données"</span>)</span>
+<span id="cb8-13"><a href=""></a>    ),</span>
+<span id="cb8-14"><a href=""></a>    <span class="fu">a11y_column</span>(</span>
+<span id="cb8-15"><a href=""></a>      <span class="at">width =</span> <span class="dv">6</span>,</span>
+<span id="cb8-16"><a href=""></a>      <span class="fu">a11y_selectInput</span>(<span class="st">"choix"</span>, <span class="at">label =</span> <span class="st">"Choisir une option"</span>, <span class="at">choices =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>)</span>
+<span id="cb8-17"><a href=""></a>    )</span>
+<span id="cb8-18"><a href=""></a>  )</span>
+<span id="cb8-19"><a href=""></a>)</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="les-packages" class="slide level2">
 <h2>Les packages</h2>
@@ -642,8 +653,8 @@ Règle d'or :
 <section id="la-documentation-le-site-web" class="slide level2">
 <h2>La documentation (le site web)</h2>
 <p>exemple d’erreur sur la publication du site web de documentation avec {pkgdown}</p>
-
-<img data-src="images/clipboard-293311766.png" class="r-stretch"><p>Assurer la cohérence des figures, des styles, des couleurs.</p>
+<p><img data-src="images/clipboard-293311766.png"></p>
+<p>Assurer la cohérence des figures, des styles, des couleurs.</p>
 <p>Minimiser la surprise du lecteur</p>
 </section>
 <section id="la-production-de-documents" class="slide level2">
@@ -654,19 +665,19 @@ Règle d'or :
 </ul>
 <div class="columns">
 <div class="column" style="width:25%;">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb8-1"><a href=""></a><span class="fu">format</span><span class="kw">:</span></span>
-<span id="cb8-2"><a href=""></a><span class="at">  </span><span class="fu">html</span><span class="kw">:</span></span>
-<span id="cb8-3"><a href=""></a><span class="at">    </span><span class="fu">axe</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
-</div><div class="column" style="width:35%;">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb9-1"><a href=""></a><span class="fu">format</span><span class="kw">:</span></span>
 <span id="cb9-2"><a href=""></a><span class="at">  </span><span class="fu">html</span><span class="kw">:</span></span>
-<span id="cb9-3"><a href=""></a><span class="at">    </span><span class="fu">axe</span><span class="kw">:</span></span>
-<span id="cb9-4"><a href=""></a><span class="at">      </span><span class="fu">output</span><span class="kw">:</span><span class="at"> document</span></span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
-</div><div class="column" style="width:30%;">
+<span id="cb9-3"><a href=""></a><span class="at">    </span><span class="fu">axe</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+</div><div class="column" style="width:35%;">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb10-1"><a href=""></a><span class="fu">format</span><span class="kw">:</span></span>
 <span id="cb10-2"><a href=""></a><span class="at">  </span><span class="fu">html</span><span class="kw">:</span></span>
 <span id="cb10-3"><a href=""></a><span class="at">    </span><span class="fu">axe</span><span class="kw">:</span></span>
-<span id="cb10-4"><a href=""></a><span class="at">      </span><span class="fu">output</span><span class="kw">:</span><span class="at"> json</span></span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb10-4"><a href=""></a><span class="at">      </span><span class="fu">output</span><span class="kw">:</span><span class="at"> document</span></span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+</div><div class="column" style="width:30%;">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb11-1"><a href=""></a><span class="fu">format</span><span class="kw">:</span></span>
+<span id="cb11-2"><a href=""></a><span class="at">  </span><span class="fu">html</span><span class="kw">:</span></span>
+<span id="cb11-3"><a href=""></a><span class="at">    </span><span class="fu">axe</span><span class="kw">:</span></span>
+<span id="cb11-4"><a href=""></a><span class="at">      </span><span class="fu">output</span><span class="kw">:</span><span class="at"> json</span></span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
 </div></div>
 <h3 id="pdf-quarto-1.9">PDF (quarto 1.9)</h3>
 <ul>
@@ -678,9 +689,9 @@ Règle d'or :
 <div class="columns">
 <div class="column" style="width:50%;">
 <p>PDF (LaTeX): Standard UA-2</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb11-1"><a href=""></a><span class="fu">format</span><span class="kw">:</span></span>
-<span id="cb11-2"><a href=""></a><span class="at">  </span><span class="fu">pdf</span><span class="kw">:</span></span>
-<span id="cb11-3"><a href=""></a><span class="at">    </span><span class="fu">pdf-standard</span><span class="kw">:</span><span class="at"> ua-2</span></span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb12-1"><a href=""></a><span class="fu">format</span><span class="kw">:</span></span>
+<span id="cb12-2"><a href=""></a><span class="at">  </span><span class="fu">pdf</span><span class="kw">:</span></span>
+<span id="cb12-3"><a href=""></a><span class="at">    </span><span class="fu">pdf-standard</span><span class="kw">:</span><span class="at"> ua-2</span></span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell" data-reveal="true" data-layout-align="default">
 <div class="cell-output-display">
 <div>
@@ -709,9 +720,9 @@ Règle d'or :
 </div>
 </div><div class="column" style="width:50%;">
 <p>Typst: Standard UA-1</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb12-1"><a href=""></a><span class="fu">format</span><span class="kw">:</span></span>
-<span id="cb12-2"><a href=""></a><span class="at">  </span><span class="fu">typst</span><span class="kw">:</span></span>
-<span id="cb12-3"><a href=""></a><span class="at">    </span><span class="fu">pdf-standard</span><span class="kw">:</span><span class="at"> ua-1</span></span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb13-1"><a href=""></a><span class="fu">format</span><span class="kw">:</span></span>
+<span id="cb13-2"><a href=""></a><span class="at">  </span><span class="fu">typst</span><span class="kw">:</span></span>
+<span id="cb13-3"><a href=""></a><span class="at">    </span><span class="fu">pdf-standard</span><span class="kw">:</span><span class="at"> ua-1</span></span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell" data-reveal="true" data-layout-align="default">
 <div class="cell-output-display">
 <div>
@@ -745,16 +756,16 @@ Règle d'or :
 </section>
 <section id="exemple" class="slide level2">
 <h2>Exemple</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb13-1"><a href=""></a><span class="co">---</span></span>
-<span id="cb13-2"><a href=""></a><span class="an">title:</span><span class="co"> Test de la validation d'accessibilité quarto</span></span>
-<span id="cb13-3"><a href=""></a></span>
-<span id="cb13-4"><a href=""></a><span class="an">format:</span></span>
-<span id="cb13-5"><a href=""></a><span class="co">  html: </span></span>
-<span id="cb13-6"><a href=""></a><span class="co">    axe:</span></span>
-<span id="cb13-7"><a href=""></a><span class="co">      output: document</span></span>
-<span id="cb13-8"><a href=""></a><span class="co">---</span></span>
-<span id="cb13-9"><a href=""></a></span>
-<span id="cb13-10"><a href=""></a>Voici une violation des rêgles de contraste: <span class="co">[</span><span class="ot">Texte en contraste insuffisant.</span><span class="co">]</span>{style="color: #eee"}.</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb14-1"><a href=""></a><span class="co">---</span></span>
+<span id="cb14-2"><a href=""></a><span class="an">title:</span><span class="co"> Test de la validation d'accessibilité quarto</span></span>
+<span id="cb14-3"><a href=""></a></span>
+<span id="cb14-4"><a href=""></a><span class="an">format:</span></span>
+<span id="cb14-5"><a href=""></a><span class="co">  html: </span></span>
+<span id="cb14-6"><a href=""></a><span class="co">    axe:</span></span>
+<span id="cb14-7"><a href=""></a><span class="co">      output: document</span></span>
+<span id="cb14-8"><a href=""></a><span class="co">---</span></span>
+<span id="cb14-9"><a href=""></a></span>
+<span id="cb14-10"><a href=""></a>Voici une violation des rêgles de contraste: <span class="co">[</span><span class="ot">Texte en contraste insuffisant.</span><span class="co">]</span>{style="color: #eee"}.</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
 <p>package {verapdf} (TBC)</p>
 </section></section>
 <section id="questions-partages" class="title-slide slide level1 center">
@@ -831,7 +842,7 @@ Règle d'or :
         progress: true,
 
         // Display the page number of the current slide
-        slideNumber: false,
+        slideNumber: 'c/t',
 
         // 'all', 'print', or 'speaker'
         showSlideNumber: 'all',
