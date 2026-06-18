@@ -10,6 +10,12 @@ format:
     indent: true
     scrollable: true
     preview-links: auto
+    slide-number: "c/t"
+    auto-stretch: false
+    center-title-slide: true
+    theme: [default, revealjs.scss]
+    plugins:
+    - PdfExport
 lang: fr
 editor: 
   markdown: 
@@ -23,7 +29,6 @@ editor:
 ::: notes
 mise en situation d'accessibilité inversée
 :::
-
 
 ## C'est pour qui l'accessibilité ?
 
@@ -66,10 +71,10 @@ le plus efficace d'atteindre ses objectifs ce communication.
 - 🤝 **Accueillir une communauté** de développeurs inclusive autour d'un
   package
 
-## Les normes {background-color="#f8fafc"}
+## Les normes {.smaller}
 
-La recommandation du W3C [Accessible Rich Internet Applications (WAI-ARIA) 1.2](https://www.w3.org/TR/wai-aria-1.2/), de juin 2023.
-
+La recommandation du W3C [Accessible Rich Internet Applications
+(WAI-ARIA) 1.2](https://www.w3.org/TR/wai-aria-1.2/), de juin 2023.
 
 La directive **(UE) 2019/882** relative aux exigences en matière
 d'accessibilité applicables aux produits et services, dite **EAA**
@@ -77,20 +82,21 @@ d'accessibilité applicables aux produits et services, dite **EAA**
 
 Adoptée en Europe en avril 2019, publiée en France en Mars 2023.
 
-:::::: columns
-:::: {.column width="60%"}
+::::: columns
+::: {.column width="60%"}
 ### Calendrier d'application
 
 - **Juin 2025** : Obligatoire pour les *nouveaux* produits et services.
 - **Juin 2030** : Obligatoire pour *tous* les produits et services
   existants.
-::::
+:::
 
-:::: {.column width="40%"}
+::: {.column width="40%"}
 ### Les Sanctions
+
 ![](images/clipboard-3832219588.png){width="100%"}
-::::
-::::::
+:::
+:::::
 
 ::: notes
 500€ / jour d'astreinte et 10k€ de dommage et intérêt
@@ -112,11 +118,12 @@ Adoptée en Europe en avril 2019, publiée en France en Mars 2023.
 :::
 :::::
 
-## L'outillage d'accessibilité
+## L'outillage d'accessibilité {.smaller}
 
 ### 1. Assistance active
 
-- Les lecteurs d'écran (NVDA, JAWS, VoiceOver)
+- Les lecteurs d'écran : NVDA (MS-Windows), JAWS (Linux), VoiceOver
+  (MacOS)
 
 ### 2. Outils de test (HTML / Pages Web)
 
@@ -134,21 +141,24 @@ Adoptée en Europe en avril 2019, publiée en France en Mars 2023.
 - Plus d'outils pour les germanophones : [BITV Test
   Toolkit](https://bitvtest.de/test-methodik/web/werkzeugliste#tablesbm)
 :::
- ![](images/clipboard-2906010032.png){align="center" width="60%"}
+
+![](images/clipboard-2906010032.png){align="center" width="60%"}
 
 ## Les Couleurs
+
 - **Pièges fréquents** : Mauvais contrastes, information uniquement
   basée sur la couleur.
-- **Bonnes pratiques** : Valider les ratios de contraste (minimum 4.5:1
-  pour le texte normal).
+- **Bonnes pratiques** : Valider les ratios de contraste:
+  - minimum 4,5:1 pour le texte normal.
+  - minimum 3:1 pour les éléments graphiques significatifs.
 
 Outils de simulation en action
 
-- [Viz-Palette](https://projects.susielu.com/viz-palette?colors=%5B%22%23e69f00%22%2C%22%2356b4e9%22%2C%22%23009e73%22%2C%22%23f0e442%22%5D&backgroundColor=%22white%22&fontColor=%22black%22&mode=%22none%22)
-  — Idéal pour tester les palettes contre le daltonisme.
+- [viz4.net/palettes](https://www.vis4.net/palettes/#/9%7Cd%7C00429d,96ffea,ffffe0%7Cffffe0,ff005e,93003a%7C0%7C1)
 - [ColorBrewer
   2.0](https://colorbrewer2.org/#type=sequential&scheme=YlGn&n=5) —
-  Sélection de palettes de données filtrables par accessibilité.
+  Sélection de palettes de couleur par usage, pour l'accessibilité.
+- ...
 
 ::: notes
 à partir de viz-palette, on fait un aller-retour vers colorbrewer2 (ou
@@ -302,33 +312,40 @@ linéaires accessibles :
 🔗 Nicola Rennie - Accessible Line Chart
 :::
 
-------------------------------------------------------------------------
-
-## Alt-text
+## Alt-text pour les graphiques
 
 ![](images/clipboard-2580408446.png){fig-alt="Le format des alt-text pour les dataviz en 4 informations clefs. Type de graphique, Jeu de données, raison du graphique, lien vers les sources."}
 
-## Alt-text
+------------------------------------------------------------------------
 
-package {alt-text} (TBC)
+Le package {ggalttext} fait la moitié du chemin :
 
-Type de graphique : Il est nécessaire de nommer la famille de graphique,
-pour donner le contexte à la suite du texte alternatif
+``` r
+install.packages("ggalttext", repos = c("https://y-sunflower.r-universe.dev"))
+library(ggalttext)
+g2 <- g2 + 
+  xlab("Mois de l'année") + 
+  ylab("Résultat (%)" )
+generate_alt_text(plot, lang="fr")
+[1] "Graphique en lignes de résultat en (%) en fonction du mois de l'année."
+```
 
-ex: un diagramme à barres
+**Type de graphique** : Il est nécessaire de nommer la famille de
+graphique, pour donner le contexte à la suite du texte alternatif. ex:
+*un diagramme à barres*
 
 Pour le nom des diagrammes, consultez le guide de datavisualization de
-toulouse-dataviz.fr
+[toulouse-dataviz.fr](https://toulouse-dataviz.notion.site/4cea244c76d0407b9722d300e798a3c2?v=f3b7a520de214623a766a5b68456097b)
 
-Jeu de données : Quelles données sont présentes dans le graphique ? les
-variables des axes x et y le plus généralement
+**Jeu de données** : Quelles données sont présentes dans le graphique ?
+les variables des axes x et y le plus généralement
 
-Raison de la présence du graphique: Pourquoi avoir inclus ce graphique,
-que fait il apparaître : une mention de chaque information visuelle, qui
-indique quoi regarder.
+**Raison de la présence du graphique**: Pourquoi avoir inclus ce
+graphique, que fait il apparaître : une mention de chaque information
+visuelle, qui indique quoi regarder.
 
-Lien vers les sources : à inclure dans le texte, pas dans l'alt-text,
-car doit profiter à tout le monde.
+**Lien vers les sources** : à inclure dans le texte, pas dans
+l'alt-text, pour en faire profiter à tout le monde.
 
 ------------------------------------------------------------------------
 
@@ -344,7 +361,7 @@ car doit profiter à tout le monde.
 
 ## Tableaux
 
-:::: columns
+::::: columns
 ::: {.column width="60%"}
 Mauvaises vs Bonnes Pratiques
 
@@ -359,31 +376,38 @@ Règle d'or :
 - Eviter la complexité accrue
 ```
 :::
-::: {.column width="40%"}
 
+::: {.column width="40%"}
 Expérimentation (spreadsheet)
 
-[Accessibility Empathy for spreadsheets](https://analysisfunction.civilservice.gov.uk/blog-2/accessibility-empathy-for-spreadsheets/): Penser à l'utilisateur qui navigue cellule par
-cellule au clavier.
-
+[Accessibility Empathy for
+spreadsheets](https://analysisfunction.civilservice.gov.uk/blog-2/accessibility-empathy-for-spreadsheets/):
+Penser à l'utilisateur qui navigue cellule par cellule au clavier.
 :::
-::::
+:::::
 
 ## Applications Shiny
 
 ### Le Problème
-Les composants web générés par défaut par Shiny ne respectent pas toujours nativement les critères stricts du WCAG (manque de balises ARIA, navigation clavier brisée).  
-🔗 [Analyse des standards WCAG applicables à Shiny](https://www.jumpingrivers.com/blog/accessible-shiny-standards-wcag/)
+
+Les composants web générés par défaut par Shiny ne respectent pas
+toujours nativement les critères stricts du WCAG (manque de balises
+ARIA, navigation clavier brisée).\
+🔗 [Analyse des standards WCAG applicables à
+Shiny](https://www.jumpingrivers.com/blog/accessible-shiny-standards-wcag/)
 
 ### La Solution : `{a11yShiny}`
-Ce package propose des wrappers (enveloppes) accessibles qui forcent le respect des exigences structurelles de la **BITV 2.0** et du **WCAG 2.1 AA** (validation des étiquettes, gestion du focus, contrastes élevés).
 
----
+Ce package propose des wrappers (enveloppes) accessibles qui forcent le
+respect des exigences structurelles de la **BITV 2.0** et du **WCAG 2.1
+AA** (validation des étiquettes, gestion du focus, contrastes élevés).
+
+------------------------------------------------------------------------
 
 ### Correspondance des fonctions `{a11yShiny}`
 
 | Élément UI | Fonction Native `shiny` / `DT` | Équivalent Accessible `{a11yShiny}` |
-| :--- | :--- | :--- |
+|:-----------------------|:-----------------------|:-----------------------|
 | **Structure globale** | `fluidPage()` | `a11y_fluidPage(lang = "fr", title = "...")` |
 | **Mise en page** | `fluidRow()` / `column()` | `a11y_fluidRow()` / `a11y_column()` |
 | **Bouton** | `actionButton()` | `a11y_actionButton()` |
@@ -391,13 +415,13 @@ Ce package propose des wrappers (enveloppes) accessibles qui forcent le respect 
 | **Tableaux** | `DT::renderDataTable()` | `a11y_renderDataTable()` |
 | **Graphiques** | `renderPlot()` (`ggplot2`) | `a11y_ggplot2_line()` / `a11y_ggplot2_bar()` |
 
----
+------------------------------------------------------------------------
 
 ### Exemple d'implémentation UI
 
 Remplacer vos appels de structure et d'inputs classiques :
 
-```r
+``` r
 library(shiny)
 library(a11yShiny)
 
@@ -427,9 +451,11 @@ pour les developpeurs de packages
 
 ### Les messages
 
-- Utiliser {cli} pour formater des messages textuels clairs, en fournissant du contexte.
+- Utiliser {cli} pour formater des messages textuels clairs, en
+  fournissant du contexte.
 
-- Pas d'information relayée par les couleurs (Vert = Succès, Rouge = Erreur) sans ajouter de texte ou symbole explicite (✔, ✖).
+- Pas d'information relayée par les couleurs (Vert = Succès, Rouge =
+  Erreur) sans ajouter de texte ou symbole explicite (✔, ✖).
 
 ## La documentation (le site web)
 
@@ -438,7 +464,7 @@ exemple d'erreur sur la publication du site web de documentation avec
 
 ![](images/clipboard-293311766.png)
 
-Assurer la cohérence des figures,  des styles, des couleurs.
+Assurer la cohérence des figures, des styles, des couleurs.
 
 Minimiser la surprise du lecteur
 
@@ -565,8 +591,6 @@ package {verapdf} (TBC)
 
 # Questions & partages
 
-
-
 https://cregouby.github.io/RR_2026/
 
 ::: notes
@@ -578,4 +602,3 @@ https://medium.com/nightingale/writing-alt-text-for-data-visualization-2a218ef43
 Colors : https://colorbrewer2.org/#type=sequential&scheme=YlGn&n=5
 https://projects.susielu.com/viz-palette?colors=%5B%22%23e69f00%22%2C%22%2356b4e9%22%2C%22%23009e73%22%2C%22%23f0e442%22%5D&backgroundColor=%22white%22&fontColor=%22black%22&mode=%22deuteranopia%22
 :::
-
