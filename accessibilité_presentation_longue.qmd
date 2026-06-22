@@ -94,7 +94,8 @@ Adoptée en Europe en avril 2019, publiée en France en Mars 2023.
 ::: {.column width="40%"}
 ### Les Sanctions
 
-![](images/clipboard-3832219588.png){width="100%"}
+![](images/clipboard-3832219588.png){fig-alt="Une coupure du journal lemonde sur la condamnation judiciaire du site d'e-commerce carrefour.fr"
+width="100%"}
 :::
 :::::
 
@@ -142,7 +143,9 @@ Adoptée en Europe en avril 2019, publiée en France en Mars 2023.
   Toolkit](https://bitvtest.de/test-methodik/web/werkzeugliste#tablesbm)
 :::
 
-![](images/clipboard-2906010032.png){align="center" width="60%"}
+![](images/clipboard-2906010032.png){align="center"
+fig-alt="une copie d'écran de l'outil d'accessibilité Chrome Lighthouse"
+width="60%"}
 
 ## Les Couleurs
 
@@ -185,7 +188,7 @@ g0
 :::
 
 ::: {.column width="50%"}
-![](images/clipboard-2252838787.png)
+![](images/clipboard-2252838787.png){fig-alt="Un graphique en ligne produit par ggplot2 avec les options par default"}
 :::
 :::::
 
@@ -207,7 +210,7 @@ g
 :::
 
 ::: {.column width="50%"}
-![](images/clipboard-784798944.png)
+![](images/clipboard-784798944.png){fig-alt="Un graphique en ligne produit par ggplot2 avec des lignes épaisses"}
 :::
 :::::
 
@@ -225,7 +228,7 @@ g
 :::
 
 ::: {.column width="50%"}
-![](images/clipboard-2902244056.png)
+![](images/clipboard-2902244056.png){fig-alt="Un graphique en ligne avec des lignes épaisses et une palette accessible"}
 :::
 :::::
 
@@ -268,7 +271,7 @@ g
 :::
 
 ::: {.column width="50%"}
-![](images/clipboard-3856453861.png)
+![](images/clipboard-3856453861.png){fig-alt="Un graphique en ligne amélioré par des légendes reportées sur les lignes"}
 :::
 :::::
 
@@ -299,7 +302,7 @@ g2 + facet_wrap(~category) +
 :::
 
 ::: {.column width="50%"}
-![](images/clipboard-2723811829.png)
+![](images/clipboard-2723811829.png){fig-alt="Un petit multiple de graphiques en lignes pour éviter l'effet spagetti"}
 :::
 :::::
 
@@ -327,7 +330,7 @@ g2 <- g2 +
   xlab("Mois de l'année") + 
   ylab("Résultat (%)" )
 generate_alt_text(plot, lang="fr")
-[1] "Graphique en lignes de résultat en (%) en fonction du mois de l'année."
+[1] "Graphique en lignes de Résultat (%) en fonction du Mois de l'année."
 ```
 
 **Type de graphique** : Il est nécessaire de nommer la famille de
@@ -349,15 +352,15 @@ l'alt-text, pour en faire profiter à tout le monde.
 
 ------------------------------------------------------------------------
 
-![](images/clipboard-3511956222.png)
+![](images/clipboard-3511956222.png){fig-alt="Un graphique en barre extrait du New-York Times sur les décès par arme à feux pour 10000 habitants, dans 10 pays"}
 
-![](images/clipboard-1732821648.png)
+![](images/clipboard-1732821648.png){fig-alt="Le text alternatif du graphique précédent avec les 4 parties importantes surlignées par une couleur."}
 
 |                                     |
 |:------------------------------------|
 | Plus difficile                      |
-| ![](images/clipboard-726440441.png) |
-| ![](images/clipboard-844471837.png) |
+| ![](images/clipboard-726440441.png){fig-alt="Un graphique en lignes extrait du journal Le Monde sur l'évolution de 5 tranches d'âges de la population française entre 1970 et 2070 qui montre une dynamique croissante des plus de 65 ans et décroissante pour les deux tranches en dessous de 45 ans"} |
+| ![](images/clipboard-844471837.png){fig-alt="Le text alternatif du graphique précédent avec les 4 parties importantes surlignées par une couleur."} |
 
 ## Tableaux
 
@@ -367,13 +370,16 @@ Mauvaises vs Bonnes Pratiques
 
 ```         
 Erreur classique : 
-- Tableaux sous forme d'images non lues
-- tableau avec caractères de séparation des colonnes
+- Tableaux sous forme d'images non lues.
+- Utiliser des caractères de séparation des colonnes.
+- Trop de chiffres significatifs pour les nombres.
 - fusion de cellules complexe.
 
 Règle d'or : 
 - Déclarer explicitement les en-têtes de colonnes et de lignes (<th>).  
-- Eviter la complexité accrue
+- 2 ou 3 chiffres significatifs maximum.
+- Mettre en gras les cellules d'intéret.
+- Éviter la complexité accrue
 ```
 :::
 
@@ -398,7 +404,7 @@ Shiny](https://www.jumpingrivers.com/blog/accessible-shiny-standards-wcag/)
 
 ### La Solution : `{a11yShiny}`
 
-Ce package propose des wrappers (enveloppes) accessibles qui forcent le
+Ce paquet propose des wrappers (enveloppes) accessibles qui forcent le
 respect des exigences structurelles de la **BITV 2.0** et du **WCAG 2.1
 AA** (validation des étiquettes, gestion du focus, contrastes élevés).
 
@@ -462,7 +468,7 @@ pour les developpeurs de packages
 exemple d'erreur sur la publication du site web de documentation avec
 {pkgdown}
 
-![](images/clipboard-293311766.png)
+![](images/clipboard-293311766.png){fig-alt="Une copie d'écran du message de publication de pkgdown avec un alt-text manquant dans le fichier README.md"}
 
 Assurer la cohérence des figures, des styles, des couleurs.
 
