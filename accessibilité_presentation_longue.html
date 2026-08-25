@@ -6,8 +6,8 @@
 <script src="accessibilité_presentation_longue_files/libs/quarto-html/tippy.umd.min.js"></script>
 <link href="accessibilité_presentation_longue_files/libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="accessibilité_presentation_longue_files/libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="accessibilité_presentation_longue_files/libs/quarto-html/quarto-syntax-highlighting-5947b73a06bce04bf1d622ae23e1ec5b.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.10.11">
+<link href="accessibilité_presentation_longue_files/libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.10.18">
 
   <meta name="author" content="Christophe Regouby">
   <title>a11y 101</title>
@@ -20,10 +20,13 @@
     /* Default styles provided by pandoc.
     ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
     */
-    code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
-    div.columns{display: flex; gap: min(4vw, 1.5em);}
-    div.column{flex: auto; overflow-x: auto;}
+    div.columns{display: flex; gap: 1.5em;}
+    div.column{flex: auto;}
+    @media screen {
+    div.columns{gap: min(4vw, 1.5em);}
+    div.column{overflow-x: auto;}
+    }
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
     ul.task-list{list-style: none;}
     ul.task-list li input[type="checkbox"] {
@@ -98,7 +101,7 @@
     code span.vs { color: #20794d; } /* VerbatimString */
     code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
-  <link rel="stylesheet" href="accessibilité_presentation_longue_files/libs/revealjs/dist/theme/quarto-113177635b68cb46286712bff2e7b5b1.css">
+  <link rel="stylesheet" href="accessibilité_presentation_longue_files/libs/revealjs/dist/theme/quarto-70f59814f36ff340eb33ac18d2b770b8.css">
   <link href="accessibilité_presentation_longue_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="accessibilité_presentation_longue_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="accessibilité_presentation_longue_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -246,7 +249,7 @@ Christophe Regouby
 <aside class="notes">
 <p>Exemple: les lunettes</p>
 <p>Exemple: regarder un écran en plein soleil</p>
-<p>Exemple: Tout le monde souffrira un handicap temporaire</p>
+<p>Exemple: Tout le monde souffrira d’un handicap temporaire</p>
 <p>Exemple: future you</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
@@ -279,7 +282,7 @@ Christophe Regouby
 <li>🤝 <strong>Accueillir une communauté</strong> de développeurs inclusive autour d’un package</li>
 </ul>
 </section>
-<section id="les-normes" class="slide level2" data-background-color="#f8fafc">
+<section id="les-normes" class="slide level2 smaller">
 <h2>Les normes</h2>
 <p>La recommandation du W3C <a href="https://www.w3.org/TR/wai-aria-1.2/">Accessible Rich Internet Applications (WAI-ARIA) 1.2</a>, de juin 2023.</p>
 <p>La directive <strong>(UE) 2019/882</strong> relative aux exigences en matière d’accessibilité applicables aux produits et services, dite <strong>EAA</strong> (<em>European Accessibility Act</em>).</p>
@@ -293,7 +296,7 @@ Christophe Regouby
 </ul>
 </div><div class="column" style="width:40%;">
 <h3 id="les-sanctions">Les Sanctions</h3>
-<p><img data-src="images/clipboard-3832219588.png" style="width:100.0%"></p>
+<p><img data-src="images/clipboard-3832219588.png" style="width:100.0%" alt="Une coupure du journal lemonde sur la condamnation judiciaire du site d'e-commerce carrefour.fr"></p>
 </div></div>
 <aside class="notes">
 <p>500€ / jour d’astreinte et 10k€ de dommage et intérêt</p>
@@ -350,7 +353,7 @@ Christophe Regouby
 </div>
 </div>
 </div>
-<p><img data-src="images/clipboard-2906010032.png" style="width:60.0%" data-align="center"></p>
+<p><img data-src="images/clipboard-2906010032.png" style="width:60.0%" data-align="center" alt="une copie d'écran de l'outil d'accessibilité Chrome Lighthouse"></p>
 </section>
 <section id="les-couleurs" class="slide level2">
 <h2>Les Couleurs</h2>
@@ -384,18 +387,18 @@ Christophe Regouby
 </section>
 <section id="graphiques-le-problème" class="slide level2 smaller">
 <h2>Graphiques : Le problème</h2>
-<p><code>ggplot2</code> possède de bons paramètres par défaut, mais ils restent insuffisants pour l’accessibilité (lignes trop fines, contrastes faibles).</p>
+<p><code>ggplot2</code> a des paramètres par défaut corrects, mais ils restent insuffisants pour l’accessibilité (lignes trop fines, contrastes faibles).</p>
 <div class="columns">
 <div class="column" style="width:50%;">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href=""></a><span class="fu">theme_set</span>(<span class="fu">theme_grey</span>(<span class="at">base_size =</span> <span class="dv">11</span>))</span>
-<span id="cb1-2"><a href=""></a>g0 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(</span>
-<span id="cb1-3"><a href=""></a>  <span class="at">data =</span> plot_data,</span>
-<span id="cb1-4"><a href=""></a>  <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y, <span class="at">colour =</span> category)</span>
-<span id="cb1-5"><a href=""></a>) <span class="sc">+</span></span>
-<span id="cb1-6"><a href=""></a>  <span class="fu">geom_line</span>()</span>
-<span id="cb1-7"><a href=""></a>g0</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="" aria-label="1"></a><span class="fu">theme_set</span>(<span class="fu">theme_grey</span>(<span class="at">base_size =</span> <span class="dv">11</span>))</span>
+<span id="cb1-2"><a href="" aria-label="2"></a>g0 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(</span>
+<span id="cb1-3"><a href="" aria-label="3"></a>  <span class="at">data =</span> plot_data,</span>
+<span id="cb1-4"><a href="" aria-label="4"></a>  <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y, <span class="at">colour =</span> category)</span>
+<span id="cb1-5"><a href="" aria-label="5"></a>) <span class="sc">+</span></span>
+<span id="cb1-6"><a href="" aria-label="6"></a>  <span class="fu">geom_line</span>()</span>
+<span id="cb1-7"><a href="" aria-label="7"></a>g0</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column" style="width:50%;">
-<p><img data-src="images/clipboard-2252838787.png"></p>
+<p><img data-src="images/clipboard-2252838787.png" alt="Un graphique en ligne produit par ggplot2 avec les options par default"></p>
 </div></div>
 </section>
 <section class="slide level2">
@@ -403,15 +406,15 @@ Christophe Regouby
 <h3 class="smaller" id="bonnes-pratiques-la-taille">bonnes pratiques : la taille</h3>
 <div class="columns">
 <div class="column" style="width:50%;">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href=""></a><span class="fu">theme_set</span>(<span class="fu">theme_grey</span>(<span class="at">base_size =</span> <span class="dv">16</span>))</span>
-<span id="cb2-2"><a href=""></a>g <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(</span>
-<span id="cb2-3"><a href=""></a>  <span class="at">data =</span> plot_data,</span>
-<span id="cb2-4"><a href=""></a>  <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y, <span class="at">colour =</span> category)</span>
-<span id="cb2-5"><a href=""></a>) <span class="sc">+</span></span>
-<span id="cb2-6"><a href=""></a>  <span class="fu">geom_line</span>(<span class="at">linewidth =</span> <span class="dv">2</span>)</span>
-<span id="cb2-7"><a href=""></a>g</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="" aria-label="1"></a><span class="fu">theme_set</span>(<span class="fu">theme_grey</span>(<span class="at">base_size =</span> <span class="dv">16</span>))</span>
+<span id="cb2-2"><a href="" aria-label="2"></a>g <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(</span>
+<span id="cb2-3"><a href="" aria-label="3"></a>  <span class="at">data =</span> plot_data,</span>
+<span id="cb2-4"><a href="" aria-label="4"></a>  <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y, <span class="at">colour =</span> category)</span>
+<span id="cb2-5"><a href="" aria-label="5"></a>) <span class="sc">+</span></span>
+<span id="cb2-6"><a href="" aria-label="6"></a>  <span class="fu">geom_line</span>(<span class="at">linewidth =</span> <span class="dv">2</span>)</span>
+<span id="cb2-7"><a href="" aria-label="7"></a>g</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column" style="width:50%;">
-<p><img data-src="images/clipboard-784798944.png"></p>
+<p><img data-src="images/clipboard-784798944.png" alt="Un graphique en ligne produit par ggplot2 avec des lignes épaisses"></p>
 </div></div>
 </section>
 <section class="slide level2">
@@ -419,11 +422,11 @@ Christophe Regouby
 <h3 class="smaller" id="bonnes-pratiques-les-couleurs">bonnes pratiques : les couleurs</h3>
 <div class="columns">
 <div class="column" style="width:50%;">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href=""></a><span class="fu">theme_set</span>(<span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">16</span>))</span>
-<span id="cb3-2"><a href=""></a>g <span class="ot">&lt;-</span> g <span class="sc">+</span> <span class="fu">scale_colour_manual</span>(<span class="at">values =</span> okabeito)</span>
-<span id="cb3-3"><a href=""></a>g</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="" aria-label="1"></a><span class="fu">theme_set</span>(<span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">16</span>))</span>
+<span id="cb3-2"><a href="" aria-label="2"></a>g <span class="ot">&lt;-</span> g <span class="sc">+</span> <span class="fu">scale_colour_manual</span>(<span class="at">values =</span> okabeito)</span>
+<span id="cb3-3"><a href="" aria-label="3"></a>g</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column" style="width:50%;">
-<p><img data-src="images/clipboard-2902244056.png"></p>
+<p><img data-src="images/clipboard-2902244056.png" alt="Un graphique en ligne avec des lignes épaisses et une palette accessible"></p>
 </div></div>
 </section>
 <section class="slide level2">
@@ -431,36 +434,36 @@ Christophe Regouby
 <h3 class="smaller" id="bonnes-pratiques-ne-pas-sappuyer-sur-les-couleurs">bonnes pratiques : ne pas s’appuyer sur les couleurs</h3>
 <div class="columns">
 <div class="column" style="width:50%;">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href=""></a>g <span class="ot">&lt;-</span> g <span class="sc">+</span></span>
-<span id="cb4-2"><a href=""></a>  <span class="fu">geom_point</span>(</span>
-<span id="cb4-3"><a href=""></a>    <span class="at">data =</span> <span class="fu">slice_max</span>(plot_data, x),</span>
-<span id="cb4-4"><a href=""></a>    <span class="at">size =</span> <span class="dv">4</span></span>
-<span id="cb4-5"><a href=""></a>  ) <span class="sc">+</span></span>
-<span id="cb4-6"><a href=""></a>  <span class="fu">new_scale_colour</span>() <span class="sc">+</span></span>
-<span id="cb4-7"><a href=""></a>  <span class="fu">scale_colour_manual</span>(<span class="at">values =</span> new_palette) <span class="sc">+</span></span>
-<span id="cb4-8"><a href=""></a>  <span class="fu">geom_text</span>(</span>
-<span id="cb4-9"><a href=""></a>    <span class="at">data =</span> <span class="fu">slice_max</span>(plot_data, x),</span>
-<span id="cb4-10"><a href=""></a>    <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">label =</span> category, <span class="at">colour =</span> category),</span>
-<span id="cb4-11"><a href=""></a>    <span class="at">hjust =</span> <span class="sc">-</span><span class="fl">0.1</span>,</span>
-<span id="cb4-12"><a href=""></a>    <span class="at">size.unit =</span> <span class="st">"pt"</span>,</span>
-<span id="cb4-13"><a href=""></a>    <span class="at">size =</span> <span class="dv">14</span></span>
-<span id="cb4-14"><a href=""></a>  ) <span class="sc">+</span></span>
-<span id="cb4-15"><a href=""></a>  <span class="fu">scale_x_date</span>(</span>
-<span id="cb4-16"><a href=""></a>    <span class="at">date_labels =</span> <span class="st">"%b"</span>,</span>
-<span id="cb4-17"><a href=""></a>    <span class="at">breaks =</span> <span class="fu">seq</span>(</span>
-<span id="cb4-18"><a href=""></a>      <span class="fu">as.Date</span>(<span class="st">"01-01-2024"</span>, <span class="at">tryFormats =</span> <span class="st">"%d-%m-%Y"</span>),</span>
-<span id="cb4-19"><a href=""></a>      <span class="at">length.out =</span> <span class="dv">4</span>,</span>
-<span id="cb4-20"><a href=""></a>      <span class="at">by =</span> <span class="st">"3 months"</span></span>
-<span id="cb4-21"><a href=""></a>    ),</span>
-<span id="cb4-22"><a href=""></a>    <span class="at">limits =</span> <span class="fu">c</span>(</span>
-<span id="cb4-23"><a href=""></a>      <span class="fu">as.Date</span>(<span class="st">"01-01-2024"</span>, <span class="at">tryFormats =</span> <span class="st">"%d-%m-%Y"</span>),</span>
-<span id="cb4-24"><a href=""></a>      <span class="fu">as.Date</span>(<span class="st">"01-02-2025"</span>, <span class="at">tryFormats =</span> <span class="st">"%d-%m-%Y"</span>)</span>
-<span id="cb4-25"><a href=""></a>    )</span>
-<span id="cb4-26"><a href=""></a>  ) <span class="sc">+</span></span>
-<span id="cb4-27"><a href=""></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"none"</span>)</span>
-<span id="cb4-28"><a href=""></a>g</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="" aria-label="1"></a>g <span class="ot">&lt;-</span> g <span class="sc">+</span></span>
+<span id="cb4-2"><a href="" aria-label="2"></a>  <span class="fu">geom_point</span>(</span>
+<span id="cb4-3"><a href="" aria-label="3"></a>    <span class="at">data =</span> <span class="fu">slice_max</span>(plot_data, x),</span>
+<span id="cb4-4"><a href="" aria-label="4"></a>    <span class="at">size =</span> <span class="dv">4</span></span>
+<span id="cb4-5"><a href="" aria-label="5"></a>  ) <span class="sc">+</span></span>
+<span id="cb4-6"><a href="" aria-label="6"></a>  <span class="fu">new_scale_colour</span>() <span class="sc">+</span></span>
+<span id="cb4-7"><a href="" aria-label="7"></a>  <span class="fu">scale_colour_manual</span>(<span class="at">values =</span> new_palette) <span class="sc">+</span></span>
+<span id="cb4-8"><a href="" aria-label="8"></a>  <span class="fu">geom_text</span>(</span>
+<span id="cb4-9"><a href="" aria-label="9"></a>    <span class="at">data =</span> <span class="fu">slice_max</span>(plot_data, x),</span>
+<span id="cb4-10"><a href="" aria-label="10"></a>    <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">label =</span> category, <span class="at">colour =</span> category),</span>
+<span id="cb4-11"><a href="" aria-label="11"></a>    <span class="at">hjust =</span> <span class="sc">-</span><span class="fl">0.1</span>,</span>
+<span id="cb4-12"><a href="" aria-label="12"></a>    <span class="at">size.unit =</span> <span class="st">"pt"</span>,</span>
+<span id="cb4-13"><a href="" aria-label="13"></a>    <span class="at">size =</span> <span class="dv">14</span></span>
+<span id="cb4-14"><a href="" aria-label="14"></a>  ) <span class="sc">+</span></span>
+<span id="cb4-15"><a href="" aria-label="15"></a>  <span class="fu">scale_x_date</span>(</span>
+<span id="cb4-16"><a href="" aria-label="16"></a>    <span class="at">date_labels =</span> <span class="st">"%b"</span>,</span>
+<span id="cb4-17"><a href="" aria-label="17"></a>    <span class="at">breaks =</span> <span class="fu">seq</span>(</span>
+<span id="cb4-18"><a href="" aria-label="18"></a>      <span class="fu">as.Date</span>(<span class="st">"01-01-2024"</span>, <span class="at">tryFormats =</span> <span class="st">"%d-%m-%Y"</span>),</span>
+<span id="cb4-19"><a href="" aria-label="19"></a>      <span class="at">length.out =</span> <span class="dv">4</span>,</span>
+<span id="cb4-20"><a href="" aria-label="20"></a>      <span class="at">by =</span> <span class="st">"3 months"</span></span>
+<span id="cb4-21"><a href="" aria-label="21"></a>    ),</span>
+<span id="cb4-22"><a href="" aria-label="22"></a>    <span class="at">limits =</span> <span class="fu">c</span>(</span>
+<span id="cb4-23"><a href="" aria-label="23"></a>      <span class="fu">as.Date</span>(<span class="st">"01-01-2024"</span>, <span class="at">tryFormats =</span> <span class="st">"%d-%m-%Y"</span>),</span>
+<span id="cb4-24"><a href="" aria-label="24"></a>      <span class="fu">as.Date</span>(<span class="st">"01-02-2025"</span>, <span class="at">tryFormats =</span> <span class="st">"%d-%m-%Y"</span>)</span>
+<span id="cb4-25"><a href="" aria-label="25"></a>    )</span>
+<span id="cb4-26"><a href="" aria-label="26"></a>  ) <span class="sc">+</span></span>
+<span id="cb4-27"><a href="" aria-label="27"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"none"</span>)</span>
+<span id="cb4-28"><a href="" aria-label="28"></a>g</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column" style="width:50%;">
-<p><img data-src="images/clipboard-3856453861.png"></p>
+<p><img data-src="images/clipboard-3856453861.png" alt="Un graphique en ligne amélioré par des légendes reportées sur les lignes"></p>
 </div></div>
 </section>
 <section class="slide level2">
@@ -468,24 +471,24 @@ Christophe Regouby
 <h3 class="smaller" id="bonnes-pratiques-les-petits-multiples">bonnes pratiques : les petits multiples</h3>
 <div class="columns">
 <div class="column" style="width:50%;">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href=""></a><span class="fu">theme_set</span>(<span class="fu">theme_bw</span>(<span class="at">base_size =</span> <span class="dv">16</span>))</span>
-<span id="cb5-2"><a href=""></a>g2 <span class="sc">+</span> <span class="fu">facet_wrap</span>(<span class="sc">~</span>category) <span class="sc">+</span></span>
-<span id="cb5-3"><a href=""></a>  <span class="fu">gghighlight</span>(<span class="at">use_direct_label =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
-<span id="cb5-4"><a href=""></a>  <span class="fu">scale_x_date</span>(</span>
-<span id="cb5-5"><a href=""></a>    <span class="at">date_labels =</span> <span class="st">"%b"</span>,</span>
-<span id="cb5-6"><a href=""></a>    <span class="at">breaks =</span> <span class="fu">seq</span>(</span>
-<span id="cb5-7"><a href=""></a>      <span class="fu">as.Date</span>(<span class="st">"01-01-2024"</span>, <span class="at">tryFormats =</span> <span class="st">"%d-%m-%Y"</span>),</span>
-<span id="cb5-8"><a href=""></a>      <span class="at">length.out =</span> <span class="dv">4</span>,</span>
-<span id="cb5-9"><a href=""></a>      <span class="at">by =</span> <span class="st">"3 months"</span></span>
-<span id="cb5-10"><a href=""></a>    ),</span>
-<span id="cb5-11"><a href=""></a>    <span class="at">limits =</span> <span class="fu">c</span>(</span>
-<span id="cb5-12"><a href=""></a>      <span class="fu">as.Date</span>(<span class="st">"01-01-2024"</span>, <span class="at">tryFormats =</span> <span class="st">"%d-%m-%Y"</span>),</span>
-<span id="cb5-13"><a href=""></a>      <span class="fu">as.Date</span>(<span class="st">"15-12-2024"</span>, <span class="at">tryFormats =</span> <span class="st">"%d-%m-%Y"</span>)</span>
-<span id="cb5-14"><a href=""></a>    )</span>
-<span id="cb5-15"><a href=""></a>  ) <span class="sc">+</span></span>
-<span id="cb5-16"><a href=""></a>  <span class="fu">theme</span>(<span class="at">axis.title =</span> <span class="fu">element_blank</span>())</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="" aria-label="1"></a><span class="fu">theme_set</span>(<span class="fu">theme_bw</span>(<span class="at">base_size =</span> <span class="dv">16</span>))</span>
+<span id="cb5-2"><a href="" aria-label="2"></a>g2 <span class="sc">+</span> <span class="fu">facet_wrap</span>(<span class="sc">~</span>category) <span class="sc">+</span></span>
+<span id="cb5-3"><a href="" aria-label="3"></a>  <span class="fu">gghighlight</span>(<span class="at">use_direct_label =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
+<span id="cb5-4"><a href="" aria-label="4"></a>  <span class="fu">scale_x_date</span>(</span>
+<span id="cb5-5"><a href="" aria-label="5"></a>    <span class="at">date_labels =</span> <span class="st">"%b"</span>,</span>
+<span id="cb5-6"><a href="" aria-label="6"></a>    <span class="at">breaks =</span> <span class="fu">seq</span>(</span>
+<span id="cb5-7"><a href="" aria-label="7"></a>      <span class="fu">as.Date</span>(<span class="st">"01-01-2024"</span>, <span class="at">tryFormats =</span> <span class="st">"%d-%m-%Y"</span>),</span>
+<span id="cb5-8"><a href="" aria-label="8"></a>      <span class="at">length.out =</span> <span class="dv">4</span>,</span>
+<span id="cb5-9"><a href="" aria-label="9"></a>      <span class="at">by =</span> <span class="st">"3 months"</span></span>
+<span id="cb5-10"><a href="" aria-label="10"></a>    ),</span>
+<span id="cb5-11"><a href="" aria-label="11"></a>    <span class="at">limits =</span> <span class="fu">c</span>(</span>
+<span id="cb5-12"><a href="" aria-label="12"></a>      <span class="fu">as.Date</span>(<span class="st">"01-01-2024"</span>, <span class="at">tryFormats =</span> <span class="st">"%d-%m-%Y"</span>),</span>
+<span id="cb5-13"><a href="" aria-label="13"></a>      <span class="fu">as.Date</span>(<span class="st">"15-12-2024"</span>, <span class="at">tryFormats =</span> <span class="st">"%d-%m-%Y"</span>)</span>
+<span id="cb5-14"><a href="" aria-label="14"></a>    )</span>
+<span id="cb5-15"><a href="" aria-label="15"></a>  ) <span class="sc">+</span></span>
+<span id="cb5-16"><a href="" aria-label="16"></a>  <span class="fu">theme</span>(<span class="at">axis.title =</span> <span class="fu">element_blank</span>())</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column" style="width:50%;">
-<p><img data-src="images/clipboard-2723811829.png"></p>
+<p><img data-src="images/clipboard-2723811829.png" alt="Un petit multiple de graphiques en lignes pour éviter l'effet spagetti"></p>
 </div></div>
 <div class="callout callout-note callout-titled callout-style-default">
 <div class="callout-body">
@@ -509,14 +512,14 @@ Christophe Regouby
 </section>
 <section class="slide level2">
 
-<p>Le package {ggalttext} fait la moitié du chemin :</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href=""></a><span class="fu">install.packages</span>(<span class="st">"ggalttext"</span>, <span class="at">repos =</span> <span class="fu">c</span>(<span class="st">"https://y-sunflower.r-universe.dev"</span>))</span>
-<span id="cb6-2"><a href=""></a><span class="fu">library</span>(ggalttext)</span>
-<span id="cb6-3"><a href=""></a>g2 <span class="ot">&lt;-</span> g2 <span class="sc">+</span> </span>
-<span id="cb6-4"><a href=""></a>  <span class="fu">xlab</span>(<span class="st">"Mois de l'année"</span>) <span class="sc">+</span> </span>
-<span id="cb6-5"><a href=""></a>  <span class="fu">ylab</span>(<span class="st">"Résultat (%)"</span> )</span>
-<span id="cb6-6"><a href=""></a><span class="fu">generate_alt_text</span>(plot, <span class="at">lang=</span><span class="st">"fr"</span>)</span>
-<span id="cb6-7"><a href=""></a>[<span class="dv">1</span>] <span class="st">"Graphique en lignes de résultat en (%) en fonction du mois de l'année."</span></span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+<p>La solution {ggalttext}:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="" aria-label="1"></a><span class="fu">install.packages</span>(<span class="st">"ggalttext"</span>, <span class="at">repos =</span> <span class="fu">c</span>(<span class="st">"https://y-sunflower.r-universe.dev"</span>))</span>
+<span id="cb6-2"><a href="" aria-label="2"></a><span class="fu">library</span>(ggalttext)</span>
+<span id="cb6-3"><a href="" aria-label="3"></a>g2 <span class="ot">&lt;-</span> g2 <span class="sc">+</span> </span>
+<span id="cb6-4"><a href="" aria-label="4"></a>  <span class="fu">xlab</span>(<span class="st">"Mois de l'année"</span>) <span class="sc">+</span> </span>
+<span id="cb6-5"><a href="" aria-label="5"></a>  <span class="fu">ylab</span>(<span class="st">"Résultat (%)"</span> )</span>
+<span id="cb6-6"><a href="" aria-label="6"></a><span class="fu">generate_alt_text</span>(plot, <span class="at">lang=</span><span class="st">"fr"</span>)</span>
+<span id="cb6-7"><a href="" aria-label="7"></a>[<span class="dv">1</span>] <span class="st">"Graphique en lignes de Résultat (%) en fonction du Mois de l'année."</span></span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
 <p><strong>Type de graphique</strong> : Il est nécessaire de nommer la famille de graphique, pour donner le contexte à la suite du texte alternatif. ex: <em>un diagramme à barres</em></p>
 <p>Pour le nom des diagrammes, consultez le guide de datavisualization de <a href="https://toulouse-dataviz.notion.site/4cea244c76d0407b9722d300e798a3c2?v=f3b7a520de214623a766a5b68456097b">toulouse-dataviz.fr</a></p>
 <p><strong>Jeu de données</strong> : Quelles données sont présentes dans le graphique ? les variables des axes x et y le plus généralement</p>
@@ -525,18 +528,21 @@ Christophe Regouby
 </section>
 <section class="slide level2">
 
-<p><img data-src="images/clipboard-3511956222.png"></p>
-<p><img data-src="images/clipboard-1732821648.png"></p>
+<p><img data-src="images/clipboard-3511956222.png" alt="Un graphique en barre extrait du New-York Times sur les décès par arme à feux pour 10000 habitants, dans 10 pays"></p>
+<p><img data-src="images/clipboard-1732821648.png" alt="Le text alternatif du graphique précédent avec les 4 parties importantes surlignées par une couleur."></p>
 <table class="caption-top">
+<colgroup>
+<col style="width: 100%">
+</colgroup>
 <tbody>
 <tr class="odd">
 <td style="text-align: left;">Plus difficile</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;"><img data-src="images/clipboard-726440441.png"></td>
+<td style="text-align: left;"><img data-src="images/clipboard-726440441.png" alt="Un graphique en lignes extrait du journal Le Monde sur l'évolution de 5 tranches d'âges de la population française entre 1970 et 2070 qui montre une dynamique croissante des plus de 65 ans et décroissante pour les deux tranches en dessous de 45 ans"></td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;"><img data-src="images/clipboard-844471837.png"></td>
+<td style="text-align: left;"><img data-src="images/clipboard-844471837.png" alt="Le text alternatif du graphique précédent avec les 4 parties importantes surlignées par une couleur."></td>
 </tr>
 </tbody>
 </table>
@@ -545,15 +551,18 @@ Christophe Regouby
 <h2>Tableaux</h2>
 <div class="columns">
 <div class="column" style="width:60%;">
-<p>Mauvaises vs Bonnes Pratiques</p>
-<pre><code>Erreur classique : 
-- Tableaux sous forme d'images non lues
-- tableau avec caractères de séparation des colonnes
+<p>Bonnes et Mauvaise Pratiques</p>
+<pre><code>Erreurs classique : 
+- Tableaux sous forme d'images non lues.
+- Utiliser des caractères de séparation des colonnes.
+- Trop de chiffres significatifs pour les nombres.
 - fusion de cellules complexe.
 
 Règle d'or : 
 - Déclarer explicitement les en-têtes de colonnes et de lignes (&lt;th&gt;).  
-- Eviter la complexité accrue</code></pre>
+- 2 ou 3 chiffres significatifs maximum.
+- Mettre en gras les cellules d'intéret.
+- Éviter la complexité accrue</code></pre>
 </div><div class="column" style="width:40%;">
 <p>Expérimentation (spreadsheet)</p>
 <p><a href="https://analysisfunction.civilservice.gov.uk/blog-2/accessibility-empathy-for-spreadsheets/">Accessibility Empathy for spreadsheets</a>: Penser à l’utilisateur qui navigue cellule par cellule au clavier.</p>
@@ -565,7 +574,7 @@ Règle d'or :
 <p>Les composants web générés par défaut par Shiny ne respectent pas toujours nativement les critères stricts du WCAG (manque de balises ARIA, navigation clavier brisée).<br>
 🔗 <a href="https://www.jumpingrivers.com/blog/accessible-shiny-standards-wcag/">Analyse des standards WCAG applicables à Shiny</a></p>
 <h3 id="la-solution-a11yshiny">La Solution : <code>{a11yShiny}</code></h3>
-<p>Ce package propose des wrappers (enveloppes) accessibles qui forcent le respect des exigences structurelles de la <strong>BITV 2.0</strong> et du <strong>WCAG 2.1 AA</strong> (validation des étiquettes, gestion du focus, contrastes élevés).</p>
+<p>Ce paquet propose des wrappers (enveloppes) accessibles qui forcent le respect des exigences structurelles de la <strong>BITV 2.0</strong> et du <strong>WCAG 2.1 AA</strong> (validation des étiquettes, gestion du focus, contrastes élevés).</p>
 </section>
 <section class="slide level2">
 
@@ -621,25 +630,25 @@ Règle d'or :
 
 <h3 id="exemple-dimplémentation-ui">Exemple d’implémentation UI</h3>
 <p>Remplacer vos appels de structure et d’inputs classiques :</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href=""></a><span class="fu">library</span>(shiny)</span>
-<span id="cb8-2"><a href=""></a><span class="fu">library</span>(a11yShiny)</span>
-<span id="cb8-3"><a href=""></a></span>
-<span id="cb8-4"><a href=""></a><span class="co"># Remplacement des fonctions standards par les variantes "a11y_"</span></span>
-<span id="cb8-5"><a href=""></a>ui <span class="ot">&lt;-</span> <span class="fu">a11y_fluidPage</span>(</span>
-<span id="cb8-6"><a href=""></a>  <span class="at">lang =</span> <span class="st">"fr"</span>,</span>
-<span id="cb8-7"><a href=""></a>  <span class="at">title =</span> <span class="st">"Mon Application Shiny Accessible"</span>,</span>
-<span id="cb8-8"><a href=""></a>  </span>
-<span id="cb8-9"><a href=""></a>  <span class="fu">a11y_fluidRow</span>(</span>
-<span id="cb8-10"><a href=""></a>    <span class="fu">a11y_column</span>(</span>
-<span id="cb8-11"><a href=""></a>      <span class="at">width =</span> <span class="dv">6</span>,</span>
-<span id="cb8-12"><a href=""></a>      <span class="fu">a11y_actionButton</span>(<span class="st">"refresh"</span>, <span class="at">label =</span> <span class="st">"Rafraîchir les données"</span>)</span>
-<span id="cb8-13"><a href=""></a>    ),</span>
-<span id="cb8-14"><a href=""></a>    <span class="fu">a11y_column</span>(</span>
-<span id="cb8-15"><a href=""></a>      <span class="at">width =</span> <span class="dv">6</span>,</span>
-<span id="cb8-16"><a href=""></a>      <span class="fu">a11y_selectInput</span>(<span class="st">"choix"</span>, <span class="at">label =</span> <span class="st">"Choisir une option"</span>, <span class="at">choices =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>)</span>
-<span id="cb8-17"><a href=""></a>    )</span>
-<span id="cb8-18"><a href=""></a>  )</span>
-<span id="cb8-19"><a href=""></a>)</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="" aria-label="1"></a><span class="fu">library</span>(shiny)</span>
+<span id="cb8-2"><a href="" aria-label="2"></a><span class="fu">library</span>(a11yShiny)</span>
+<span id="cb8-3"><a href="" aria-label="3"></a></span>
+<span id="cb8-4"><a href="" aria-label="4"></a><span class="co"># Remplacement des fonctions standards par les variantes "a11y_"</span></span>
+<span id="cb8-5"><a href="" aria-label="5"></a>ui <span class="ot">&lt;-</span> <span class="fu">a11y_fluidPage</span>(</span>
+<span id="cb8-6"><a href="" aria-label="6"></a>  <span class="at">lang =</span> <span class="st">"fr"</span>,</span>
+<span id="cb8-7"><a href="" aria-label="7"></a>  <span class="at">title =</span> <span class="st">"Mon Application Shiny Accessible"</span>,</span>
+<span id="cb8-8"><a href="" aria-label="8"></a>  </span>
+<span id="cb8-9"><a href="" aria-label="9"></a>  <span class="fu">a11y_fluidRow</span>(</span>
+<span id="cb8-10"><a href="" aria-label="10"></a>    <span class="fu">a11y_column</span>(</span>
+<span id="cb8-11"><a href="" aria-label="11"></a>      <span class="at">width =</span> <span class="dv">6</span>,</span>
+<span id="cb8-12"><a href="" aria-label="12"></a>      <span class="fu">a11y_actionButton</span>(<span class="st">"refresh"</span>, <span class="at">label =</span> <span class="st">"Rafraîchir les données"</span>)</span>
+<span id="cb8-13"><a href="" aria-label="13"></a>    ),</span>
+<span id="cb8-14"><a href="" aria-label="14"></a>    <span class="fu">a11y_column</span>(</span>
+<span id="cb8-15"><a href="" aria-label="15"></a>      <span class="at">width =</span> <span class="dv">6</span>,</span>
+<span id="cb8-16"><a href="" aria-label="16"></a>      <span class="fu">a11y_selectInput</span>(<span class="st">"choix"</span>, <span class="at">label =</span> <span class="st">"Choisir une option"</span>, <span class="at">choices =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>)</span>
+<span id="cb8-17"><a href="" aria-label="17"></a>    )</span>
+<span id="cb8-18"><a href="" aria-label="18"></a>  )</span>
+<span id="cb8-19"><a href="" aria-label="19"></a>)</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="les-packages" class="slide level2">
 <h2>Les packages</h2>
@@ -653,7 +662,7 @@ Règle d'or :
 <section id="la-documentation-le-site-web" class="slide level2">
 <h2>La documentation (le site web)</h2>
 <p>exemple d’erreur sur la publication du site web de documentation avec {pkgdown}</p>
-<p><img data-src="images/clipboard-293311766.png"></p>
+<p><img data-src="images/clipboard-293311766.png" alt="Une copie d'écran du message de publication de pkgdown avec un alt-text manquant dans le fichier README.md"></p>
 <p>Assurer la cohérence des figures, des styles, des couleurs.</p>
 <p>Minimiser la surprise du lecteur</p>
 </section>
@@ -665,19 +674,19 @@ Règle d'or :
 </ul>
 <div class="columns">
 <div class="column" style="width:25%;">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb9-1"><a href=""></a><span class="fu">format</span><span class="kw">:</span></span>
-<span id="cb9-2"><a href=""></a><span class="at">  </span><span class="fu">html</span><span class="kw">:</span></span>
-<span id="cb9-3"><a href=""></a><span class="at">    </span><span class="fu">axe</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb9-1"><a href="" aria-label="1"></a><span class="fu">format</span><span class="kw">:</span></span>
+<span id="cb9-2"><a href="" aria-label="2"></a><span class="at">  </span><span class="fu">html</span><span class="kw">:</span></span>
+<span id="cb9-3"><a href="" aria-label="3"></a><span class="at">    </span><span class="fu">axe</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column" style="width:35%;">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb10-1"><a href=""></a><span class="fu">format</span><span class="kw">:</span></span>
-<span id="cb10-2"><a href=""></a><span class="at">  </span><span class="fu">html</span><span class="kw">:</span></span>
-<span id="cb10-3"><a href=""></a><span class="at">    </span><span class="fu">axe</span><span class="kw">:</span></span>
-<span id="cb10-4"><a href=""></a><span class="at">      </span><span class="fu">output</span><span class="kw">:</span><span class="at"> document</span></span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb10-1"><a href="" aria-label="1"></a><span class="fu">format</span><span class="kw">:</span></span>
+<span id="cb10-2"><a href="" aria-label="2"></a><span class="at">  </span><span class="fu">html</span><span class="kw">:</span></span>
+<span id="cb10-3"><a href="" aria-label="3"></a><span class="at">    </span><span class="fu">axe</span><span class="kw">:</span></span>
+<span id="cb10-4"><a href="" aria-label="4"></a><span class="at">      </span><span class="fu">output</span><span class="kw">:</span><span class="at"> document</span></span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column" style="width:30%;">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb11-1"><a href=""></a><span class="fu">format</span><span class="kw">:</span></span>
-<span id="cb11-2"><a href=""></a><span class="at">  </span><span class="fu">html</span><span class="kw">:</span></span>
-<span id="cb11-3"><a href=""></a><span class="at">    </span><span class="fu">axe</span><span class="kw">:</span></span>
-<span id="cb11-4"><a href=""></a><span class="at">      </span><span class="fu">output</span><span class="kw">:</span><span class="at"> json</span></span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb11-1"><a href="" aria-label="1"></a><span class="fu">format</span><span class="kw">:</span></span>
+<span id="cb11-2"><a href="" aria-label="2"></a><span class="at">  </span><span class="fu">html</span><span class="kw">:</span></span>
+<span id="cb11-3"><a href="" aria-label="3"></a><span class="at">    </span><span class="fu">axe</span><span class="kw">:</span></span>
+<span id="cb11-4"><a href="" aria-label="4"></a><span class="at">      </span><span class="fu">output</span><span class="kw">:</span><span class="at"> json</span></span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
 </div></div>
 <h3 id="pdf-quarto-1.9">PDF (quarto 1.9)</h3>
 <ul>
@@ -689,9 +698,9 @@ Règle d'or :
 <div class="columns">
 <div class="column" style="width:50%;">
 <p>PDF (LaTeX): Standard UA-2</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb12-1"><a href=""></a><span class="fu">format</span><span class="kw">:</span></span>
-<span id="cb12-2"><a href=""></a><span class="at">  </span><span class="fu">pdf</span><span class="kw">:</span></span>
-<span id="cb12-3"><a href=""></a><span class="at">    </span><span class="fu">pdf-standard</span><span class="kw">:</span><span class="at"> ua-2</span></span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb12-1"><a href="" aria-label="1"></a><span class="fu">format</span><span class="kw">:</span></span>
+<span id="cb12-2"><a href="" aria-label="2"></a><span class="at">  </span><span class="fu">pdf</span><span class="kw">:</span></span>
+<span id="cb12-3"><a href="" aria-label="3"></a><span class="at">    </span><span class="fu">pdf-standard</span><span class="kw">:</span><span class="at"> ua-2</span></span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell" data-reveal="true" data-layout-align="default">
 <div class="cell-output-display">
 <div>
@@ -720,9 +729,9 @@ Règle d'or :
 </div>
 </div><div class="column" style="width:50%;">
 <p>Typst: Standard UA-1</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb13-1"><a href=""></a><span class="fu">format</span><span class="kw">:</span></span>
-<span id="cb13-2"><a href=""></a><span class="at">  </span><span class="fu">typst</span><span class="kw">:</span></span>
-<span id="cb13-3"><a href=""></a><span class="at">    </span><span class="fu">pdf-standard</span><span class="kw">:</span><span class="at"> ua-1</span></span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb13-1"><a href="" aria-label="1"></a><span class="fu">format</span><span class="kw">:</span></span>
+<span id="cb13-2"><a href="" aria-label="2"></a><span class="at">  </span><span class="fu">typst</span><span class="kw">:</span></span>
+<span id="cb13-3"><a href="" aria-label="3"></a><span class="at">    </span><span class="fu">pdf-standard</span><span class="kw">:</span><span class="at"> ua-1</span></span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell" data-reveal="true" data-layout-align="default">
 <div class="cell-output-display">
 <div>
@@ -756,16 +765,16 @@ Règle d'or :
 </section>
 <section id="exemple" class="slide level2">
 <h2>Exemple</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb14-1"><a href=""></a><span class="co">---</span></span>
-<span id="cb14-2"><a href=""></a><span class="an">title:</span><span class="co"> Test de la validation d'accessibilité quarto</span></span>
-<span id="cb14-3"><a href=""></a></span>
-<span id="cb14-4"><a href=""></a><span class="an">format:</span></span>
-<span id="cb14-5"><a href=""></a><span class="co">  html: </span></span>
-<span id="cb14-6"><a href=""></a><span class="co">    axe:</span></span>
-<span id="cb14-7"><a href=""></a><span class="co">      output: document</span></span>
-<span id="cb14-8"><a href=""></a><span class="co">---</span></span>
-<span id="cb14-9"><a href=""></a></span>
-<span id="cb14-10"><a href=""></a>Voici une violation des rêgles de contraste: <span class="co">[</span><span class="ot">Texte en contraste insuffisant.</span><span class="co">]</span>{style="color: #eee"}.</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb14-1"><a href="" aria-label="1"></a><span class="co">---</span></span>
+<span id="cb14-2"><a href="" aria-label="2"></a><span class="an">title:</span><span class="co"> Test de la validation d'accessibilité quarto</span></span>
+<span id="cb14-3"><a href="" aria-label="3"></a></span>
+<span id="cb14-4"><a href="" aria-label="4"></a><span class="an">format:</span></span>
+<span id="cb14-5"><a href="" aria-label="5"></a><span class="co">  html: </span></span>
+<span id="cb14-6"><a href="" aria-label="6"></a><span class="co">    axe:</span></span>
+<span id="cb14-7"><a href="" aria-label="7"></a><span class="co">      output: document</span></span>
+<span id="cb14-8"><a href="" aria-label="8"></a><span class="co">---</span></span>
+<span id="cb14-9"><a href="" aria-label="9"></a></span>
+<span id="cb14-10"><a href="" aria-label="10"></a>Voici une violation des rêgles de contraste: <span class="co">[</span><span class="ot">Texte en contraste insuffisant.</span><span class="co">]</span>{style="color: #eee"}.</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
 <p>package {verapdf} (TBC)</p>
 </section></section>
 <section id="questions-partages" class="title-slide slide level1 center">
