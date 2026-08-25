@@ -16,6 +16,7 @@ format:
     theme: [default, revealjs.scss]
     plugins:
     - PdfExport
+    lightbox: true
 lang: fr
 editor: 
   markdown: 
@@ -49,7 +50,7 @@ Exemple: les lunettes
 
 Exemple: regarder un écran en plein soleil
 
-Exemple: Tout le monde souffrira un handicap temporaire
+Exemple: Tout le monde souffrira d'un handicap temporaire
 
 Exemple: future you
 :::
@@ -71,7 +72,7 @@ le plus efficace d'atteindre ses objectifs ce communication.
 - 🤝 **Accueillir une communauté** de développeurs inclusive autour d'un
   package
 
-## Les normes {.smaller}
+## Les normes{.smaller}
 
 La recommandation du W3C [Accessible Rich Internet Applications
 (WAI-ARIA) 1.2](https://www.w3.org/TR/wai-aria-1.2/), de juin 2023.
@@ -123,7 +124,7 @@ width="100%"}
 
 ### 1. Assistance active
 
-- Les lecteurs d'écran : NVDA (MS-Windows), JAWS (Linux), VoiceOver
+- Les lecteurs d'écran : NVDA / JAWS (MS-Windows),  Orca (Linux), VoiceOver
   (MacOS)
 
 ### 2. Outils de test (HTML / Pages Web)
@@ -170,7 +171,7 @@ pas, puisqu'on peut déja y choisir les palettes compatibles)
 
 ## Graphiques : Le problème {.smaller}
 
-`ggplot2` possède de bons paramètres par défaut, mais ils restent
+`ggplot2` a des paramètres par défaut corrects, mais ils restent
 insuffisants pour l'accessibilité (lignes trop fines, contrastes
 faibles).
 
@@ -321,7 +322,7 @@ linéaires accessibles :
 
 ------------------------------------------------------------------------
 
-Le package {ggalttext} fait la moitié du chemin :
+La solution {ggalttext}:
 
 ``` r
 install.packages("ggalttext", repos = c("https://y-sunflower.r-universe.dev"))
@@ -366,10 +367,10 @@ l'alt-text, pour en faire profiter à tout le monde.
 
 ::::: columns
 ::: {.column width="60%"}
-Mauvaises vs Bonnes Pratiques
+Bonnes et Mauvaise Pratiques
 
 ```         
-Erreur classique : 
+Erreurs classique : 
 - Tableaux sous forme d'images non lues.
 - Utiliser des caractères de séparation des colonnes.
 - Trop de chiffres significatifs pour les nombres.
