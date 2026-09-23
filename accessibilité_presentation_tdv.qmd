@@ -531,11 +531,11 @@ pour les developpeurs de packages
 - capturer les erreur pour éviter
 
 ``` python
-In [9]: from delineo import segment_drawing_rfdetr
+In [9]: from delineo import segment_rfdetr
 
 In [11]: 
-    ...:     segment_drawing_rfdetr(
-    ...:         input_dir=here("../maelstrom/data/drawings/ata_21/"),
+    ...:     segment_rfdetr(
+    ...:         input_dir=here("data/drawings/),
     ...:         checkpoint_path=[27],
     ...:         file_glob="* - 1 _ *",
     ...:         output_parquet=here("data/log/x.parquet")
@@ -543,15 +543,15 @@ In [11]:
 ---------------------------------------------------------------------------
 FileNotFoundError                         Traceback (most recent call last)
 Cell In[11], line 1
-----> 1 segment_drawing_rfdetr(
-      2     input_dir=here("../maelstrom/data/drawings/ata_21/"),
+----> 1 segment_rfdetr(
+      2     input_dir=here("data/drawings/),
       3     checkpoint_path=[27],
       4     file_glob="* - 1 _ *",
       5     output_parquet=here("data/log/x.parquet")
       6 )
 
-File ~/_AA/delineo/delineo/ml/drawing_segmentation_model.py:191, in segment_drawing_rfdetr(input_dir, checkpoint_path, output_parquet, min_confidence, nms_iou, file_glob)
-    167 def segment_drawing_rfdetr(
+File ~/_AA/delineo/delineo/ml/drawing_segmentation_model.py:191, in segment_rfdetr(input_dir, checkpoint_path, output_parquet, min_confidence, nms_iou, file_glob)
+    167 def segment_rfdetr(
     168     input_dir: str | Path,
     169     checkpoint_path: str | Path,
    (...)    173     file_glob: str | None = None,
