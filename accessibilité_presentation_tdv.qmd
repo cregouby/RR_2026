@@ -376,44 +376,47 @@ l'alt-text, pour en faire profiter à tout le monde.
 
 ::::: columns
 ::: {.column width="60%"}
-Bonnes et Mauvaise Pratiques
+### Erreurs classique : 
 
-```         
-Erreurs classique : 
-- Tableaux sous forme d'images non lues.
-- Utiliser des caractères de séparation des colonnes.
-- Trop de chiffres significatifs pour les nombres.
-- fusion de cellules complexe.
-
-Règle d'or : 
-- Déclarer explicitement les en-têtes de colonnes et de lignes (<th>).  
-- 2 ou 3 chiffres significatifs maximum.
-- Mettre en gras les cellules d'intéret.
-- Éviter la complexité accrue
-```
+- Trop de **chiffres significatifs** pour les nombres.\
+- Tableaux sous forme d'images non lues.\
+- Utiliser des caractères de séparation des colonnes.\
+- fusion de cellules complexe.\
 :::
 
 ::: {.column width="40%"}
+### Règle d'or : 
+
+- 2 ou 3 chiffres significatifs maximum.\
+- Déclarer explicitement les en-têtes de colonnes et de lignes (balise
+  `<th>`). 
+- Mettre **en gras** les cellules d'intéret.\
+- Éviter la complexité accrue
+:::
+
 Expérimentation (spreadsheet)
 
 [Accessibility Empathy for
-spreadsheets](https://analysisfunction.civilservice.gov.uk/blog-2/accessibility-empathy-for-spreadsheets/):
+spreadsheets](https://analysisfunction.civilservice.gov.uk/blog-2/accessibility-empathy-for-spreadsheets/):\
 Penser à l'utilisateur qui navigue cellule par cellule au clavier.
-:::
 :::::
 
 ## Applications Shiny
 
 ### Le challenge
 
-Les composants web générés par défaut par Shiny produisent déjà un HTML
-correct et étiqueté. L’accessibilité consiste surtout à ne pas casser
-cela, et à ajouter délibérément quelques éléments — ARIA là où c’est
-vraiment nécessaire, l’utilisabilité au clavier pour tout ce qui est
-personnalisé, un contraste suffisant et du texte alternatif.\
+Les composants web générés par Shiny produisent déjà un HTML correct et
+étiqueté.\
+L’accessibilité consiste surtout à
+
+ -  **ne pas casser** la base existante,
+ -   à ajouter délibérément quelques éléments ARIA **là où c’est vraiment nécessaire**,
+ -   l’utilisabilité au clavier pour tout ce qui est personnalisé
+ -   un contraste suffisant et du texte alternatif.
+
 🔗 [Applications Shiny acccessibles : étiquettes, ARIA, clavier et
 contraste par
-Datanovia](https://www.datanovia.com/fr/learn/programming/shiny/performance/accessibility-performance)
+Datanovia](https://www.datanovia.com/fr/learn/programming/shiny/performance/accessibility-performance)\
 🔗 [Analyse des standards WCAG applicables à
 Shiny](https://www.jumpingrivers.com/blog/accessible-shiny-standards-wcag/)
 
@@ -696,10 +699,10 @@ format:
 :::
 ::::::
 
-###  HTML (quarto 1.10)
+### HTML (quarto 1.10)
 
-- Navigabilité des boutons de la barre de navigation , de la barre verticale, et des modes
-  dark/light
+- Navigabilité des boutons de la barre de navigation , de la barre
+  verticale, et des modes dark/light
 
 ### PDF (quarto 1.9)
 

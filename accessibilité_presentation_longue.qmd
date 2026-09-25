@@ -371,41 +371,76 @@ l'alt-text, pour en faire profiter à tout le monde.
 
 ::::: columns
 ::: {.column width="60%"}
-Bonnes et Mauvaise Pratiques
-
-```         
-Erreurs classique : 
-- Tableaux sous forme d'images non lues.
-- Utiliser des caractères de séparation des colonnes.
-- Trop de chiffres significatifs pour les nombres.
-- fusion de cellules complexe.
-
-Règle d'or : 
-- Déclarer explicitement les en-têtes de colonnes et de lignes (<th>).  
-- 2 ou 3 chiffres significatifs maximum.
-- Mettre en gras les cellules d'intéret.
-- Éviter la complexité accrue
-```
+### Erreurs classique :\
+- Trop de **chiffres significatifs** pour les nombres.\
+- Tableaux sous forme d'images non lues.\
+- Utiliser des caractères de séparation des colonnes.\
+- fusion de cellules complexe.\
 :::
 
 ::: {.column width="40%"}
+### Règle d'or :\
+- 2 ou 3 chiffres significatifs maximum.\
+- Déclarer explicitement les en-têtes de colonnes et de lignes (balise `<th>`).\  
+- Mettre **en gras** les cellules d'intéret.\
+- Éviter la complexité accrue
+:::
+
 Expérimentation (spreadsheet)
 
 [Accessibility Empathy for
-spreadsheets](https://analysisfunction.civilservice.gov.uk/blog-2/accessibility-empathy-for-spreadsheets/):
+spreadsheets](https://analysisfunction.civilservice.gov.uk/blog-2/accessibility-empathy-for-spreadsheets/):\
 Penser à l'utilisateur qui navigue cellule par cellule au clavier.
-:::
 :::::
 
-## Applications Shiny
+### Le challenge
 
-### Le Problème
+Les composants web générés par Shiny produisent déjà un HTML correct et
+étiqueté.\
+L’accessibilité consiste surtout à
 
-Les composants web générés par défaut par Shiny ne respectent pas
-toujours nativement les critères stricts du WCAG (manque de balises
-ARIA, navigation clavier brisée).\
+ -  **ne pas casser** la base existante,
+ -   à ajouter délibérément quelques éléments ARIA **là où c’est vraiment nécessaire**,
+ -   l’utilisabilité au clavier pour tout ce qui est personnalisé
+ -   un contraste suffisant et du texte alternatif.
+
+🔗 [Applications Shiny acccessibles : étiquettes, ARIA, clavier et
+contraste par
+Datanovia](https://www.datanovia.com/fr/learn/programming/shiny/performance/accessibility-performance)\
 🔗 [Analyse des standards WCAG applicables à
 Shiny](https://www.jumpingrivers.com/blog/accessible-shiny-standards-wcag/)
+
+------------------------------------------------------------------------
+
+### La Solution : La leçon d'accessibilité de Datanovia
+
+::: {.callout-tip icon="false"}
+## Points Clef
+
+**Chaque entrée a besoin d’une vraie étiquette visible**. L’argument
+`label` de Shiny rend déjà un `<label>` en bonne et due forme, lié à
+l’entrée — passez donc une vraie étiquette, jamais un simple
+placeholder. Ici, l’essentiel de l’accessibilité ne consiste pas à
+lutter contre le framework. **Ne recourez à ARIA que là où le HTML est
+insuffisant**. Le cas majeur est une région `aria-live` pour qu’un
+lecteur d’écran annonce un résultat qui a changé sans déplacer le focus
+; `tagAppendAttributes()` ajoute `role` et `aria-*` à n’importe quelle
+balise. **Tout doit fonctionner au clavier**. Un ordre de focus logique,
+un anneau de focus visible, aucun contrôle réservé à la souris — les
+contrôles Shiny natifs sont utilisables au clavier par défaut, donc les
+échecs viennent des widgets personnalisés que vous ajoutez. **Respectez
+le contraste minimum et ne signalez jamais par la couleur seule**.
+`bslib::bs_theme()` définit des couleurs accessibles en un seul endroit
+; ajoutez du texte, une icône ou une forme pour qu’un indice rouge/vert
+ne soit pas le *seul* indice. **Rendez les graphiques et les tableaux
+perceptibles.** Donnez un `alt` à `renderPlot()`, proposez un tableau de
+données de repli pour les chiffres, et balisez les tableaux avec un
+`<caption>` et `scope`. Une application rapide et fluide est en soi plus
+accessible — la leçon sur les performances est l’autre moitié de cette
+paire.
+:::
+
+------------------------------------------------------------------------
 
 ### La Solution : `{a11yShiny}`
 
