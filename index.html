@@ -6,11 +6,11 @@
 <script src="accessibilité_presentation_longue_files/libs/quarto-html/tippy.umd.min.js"></script>
 <link href="accessibilité_presentation_longue_files/libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="accessibilité_presentation_longue_files/libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="accessibilité_presentation_longue_files/libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="accessibilité_presentation_longue_files/libs/quarto-html/quarto-syntax-highlighting-3b9ea68436acb9022c2fbce6dbb58b06.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="accessibilité_presentation_longue_files/libs/quarto-contrib/glightbox/glightbox.min.js"></script>
 <link href="accessibilité_presentation_longue_files/libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
 <link href="accessibilité_presentation_longue_files/libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.10.18">
+  <meta name="generator" content="quarto-1.11.5">
 
   <meta name="author" content="Christophe Regouby">
   <title>a11y 101</title>
@@ -302,7 +302,9 @@ Christophe Regouby
 <p><a href="images/clipboard-3832219588.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img data-src="images/clipboard-3832219588.png" style="width:100.0%" alt="Une coupure du journal lemonde sur la condamnation judiciaire du site d'e-commerce carrefour.fr"></a></p>
 </div></div>
 <aside class="notes">
-<p>500€ / jour d’astreinte et 10k€ de dommage et intérêt</p>
+<p>500€ / jour d’astreinte et 10k€ de dommage et intérêt piur Carrefour.fr. Source le Monde</p>
+<p>Mon niveau d’obligation: rgaa.info/recherche</p>
+<p>Réference : https://cecileuzel.com/web-design-le-blog/l-accessibilite-web-etes-vous-hors-la-loi</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -554,28 +556,60 @@ Christophe Regouby
 <h2>Tableaux</h2>
 <div class="columns">
 <div class="column" style="width:60%;">
-<p>Bonnes et Mauvaise Pratiques</p>
-<pre><code>Erreurs classique : 
-- Tableaux sous forme d'images non lues.
-- Utiliser des caractères de séparation des colonnes.
-- Trop de chiffres significatifs pour les nombres.
-- fusion de cellules complexe.
-
-Règle d'or : 
-- Déclarer explicitement les en-têtes de colonnes et de lignes (&lt;th&gt;).  
-- 2 ou 3 chiffres significatifs maximum.
-- Mettre en gras les cellules d'intéret.
-- Éviter la complexité accrue</code></pre>
+<h3 id="erreurs-classique">Erreurs classique :<br>
+</h3>
+<ul>
+<li>Trop de <strong>chiffres significatifs</strong> pour les nombres.<br>
+</li>
+<li>Tableaux sous forme d’images non lues.<br>
+</li>
+<li>Utiliser des caractères de séparation des colonnes.<br>
+</li>
+<li>fusion de cellules complexe.<br>
+</li>
+</ul>
 </div><div class="column" style="width:40%;">
-<p>Expérimentation (spreadsheet)</p>
-<p><a href="https://analysisfunction.civilservice.gov.uk/blog-2/accessibility-empathy-for-spreadsheets/">Accessibility Empathy for spreadsheets</a>: Penser à l’utilisateur qui navigue cellule par cellule au clavier.</p>
-</div></div>
-</section>
-<section id="applications-shiny" class="slide level2">
-<h2>Applications Shiny</h2>
-<h3 id="le-problème">Le Problème</h3>
-<p>Les composants web générés par défaut par Shiny ne respectent pas toujours nativement les critères stricts du WCAG (manque de balises ARIA, navigation clavier brisée).<br>
+<h3 id="règle-dor">Règle d’or :<br>
+</h3>
+<ul>
+<li>2 ou 3 chiffres significatifs maximum.<br>
+</li>
+<li>Déclarer explicitement les en-têtes de colonnes et de lignes (balise <code>&lt;th&gt;</code>).&nbsp;</li>
+<li>Mettre <strong>en gras</strong> les cellules d’intéret.<br>
+</li>
+<li>Éviter la complexité accrue</li>
+</ul>
+</div><p>Expérimentation (spreadsheet)</p><p><a href="https://analysisfunction.civilservice.gov.uk/blog-2/accessibility-empathy-for-spreadsheets/">Accessibility Empathy for spreadsheets</a>:<br>
+Penser à l’utilisateur qui navigue cellule par cellule au clavier.</p>
+</div>
+<h3 id="le-challenge">Le challenge</h3>
+<p>Les composants web générés par Shiny produisent déjà un HTML correct et étiqueté.<br>
+L’accessibilité consiste surtout à</p>
+<ul>
+<li><strong>ne pas casser</strong> la base existante,</li>
+<li>à ajouter délibérément quelques éléments ARIA <strong>là où c’est vraiment nécessaire</strong>,</li>
+<li>l’utilisabilité au clavier pour tout ce qui est personnalisé</li>
+<li>un contraste suffisant et du texte alternatif.</li>
+</ul>
+<p>🔗 <a href="https://www.datanovia.com/fr/learn/programming/shiny/performance/accessibility-performance">Applications Shiny acccessibles : étiquettes, ARIA, clavier et contraste par Datanovia</a><br>
 🔗 <a href="https://www.jumpingrivers.com/blog/accessible-shiny-standards-wcag/">Analyse des standards WCAG applicables à Shiny</a></p>
+</section>
+<section class="slide level2">
+
+<h3 id="la-solution-la-leçon-daccessibilité-de-datanovia">La Solution : La leçon d’accessibilité de Datanovia</h3>
+<div class="callout callout-tip no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Points Clef</strong></p>
+</div>
+<div class="callout-content">
+<p><strong>Chaque entrée a besoin d’une vraie étiquette visible</strong>. L’argument <code>label</code> de Shiny rend déjà un <code>&lt;label&gt;</code> en bonne et due forme, lié à l’entrée — passez donc une vraie étiquette, jamais un simple placeholder. Ici, l’essentiel de l’accessibilité ne consiste pas à lutter contre le framework. <strong>Ne recourez à ARIA que là où le HTML est insuffisant</strong>. Le cas majeur est une région <code>aria-live</code> pour qu’un lecteur d’écran annonce un résultat qui a changé sans déplacer le focus ; <code>tagAppendAttributes()</code> ajoute <code>role</code> et <code>aria-*</code> à n’importe quelle balise. <strong>Tout doit fonctionner au clavier</strong>. Un ordre de focus logique, un anneau de focus visible, aucun contrôle réservé à la souris — les contrôles Shiny natifs sont utilisables au clavier par défaut, donc les échecs viennent des widgets personnalisés que vous ajoutez. <strong>Respectez le contraste minimum et ne signalez jamais par la couleur seule</strong>. <code>bslib::bs_theme()</code> définit des couleurs accessibles en un seul endroit ; ajoutez du texte, une icône ou une forme pour qu’un indice rouge/vert ne soit pas le <em>seul</em> indice. <strong>Rendez les graphiques et les tableaux perceptibles.</strong> Donnez un <code>alt</code> à <code>renderPlot()</code>, proposez un tableau de données de repli pour les chiffres, et balisez les tableaux avec un <code>&lt;caption&gt;</code> et <code>scope</code>. Une application rapide et fluide est en soi plus accessible — la leçon sur les performances est l’autre moitié de cette paire.</p>
+</div>
+</div>
+</div>
+</section>
+<section class="slide level2">
+
 <h3 id="la-solution-a11yshiny">La Solution : <code>{a11yShiny}</code></h3>
 <p>Ce paquet propose des wrappers (enveloppes) accessibles qui forcent le respect des exigences structurelles de la <strong>BITV 2.0</strong> et du <strong>WCAG 2.1 AA</strong> (validation des étiquettes, gestion du focus, contrastes élevés).</p>
 </section>
@@ -633,25 +667,25 @@ Règle d'or :
 
 <h3 id="exemple-dimplémentation-ui">Exemple d’implémentation UI</h3>
 <p>Remplacer vos appels de structure et d’inputs classiques :</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="" aria-label="1"></a><span class="fu">library</span>(shiny)</span>
-<span id="cb8-2"><a href="" aria-label="2"></a><span class="fu">library</span>(a11yShiny)</span>
-<span id="cb8-3"><a href="" aria-label="3"></a></span>
-<span id="cb8-4"><a href="" aria-label="4"></a><span class="co"># Remplacement des fonctions standards par les variantes "a11y_"</span></span>
-<span id="cb8-5"><a href="" aria-label="5"></a>ui <span class="ot">&lt;-</span> <span class="fu">a11y_fluidPage</span>(</span>
-<span id="cb8-6"><a href="" aria-label="6"></a>  <span class="at">lang =</span> <span class="st">"fr"</span>,</span>
-<span id="cb8-7"><a href="" aria-label="7"></a>  <span class="at">title =</span> <span class="st">"Mon Application Shiny Accessible"</span>,</span>
-<span id="cb8-8"><a href="" aria-label="8"></a>  </span>
-<span id="cb8-9"><a href="" aria-label="9"></a>  <span class="fu">a11y_fluidRow</span>(</span>
-<span id="cb8-10"><a href="" aria-label="10"></a>    <span class="fu">a11y_column</span>(</span>
-<span id="cb8-11"><a href="" aria-label="11"></a>      <span class="at">width =</span> <span class="dv">6</span>,</span>
-<span id="cb8-12"><a href="" aria-label="12"></a>      <span class="fu">a11y_actionButton</span>(<span class="st">"refresh"</span>, <span class="at">label =</span> <span class="st">"Rafraîchir les données"</span>)</span>
-<span id="cb8-13"><a href="" aria-label="13"></a>    ),</span>
-<span id="cb8-14"><a href="" aria-label="14"></a>    <span class="fu">a11y_column</span>(</span>
-<span id="cb8-15"><a href="" aria-label="15"></a>      <span class="at">width =</span> <span class="dv">6</span>,</span>
-<span id="cb8-16"><a href="" aria-label="16"></a>      <span class="fu">a11y_selectInput</span>(<span class="st">"choix"</span>, <span class="at">label =</span> <span class="st">"Choisir une option"</span>, <span class="at">choices =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>)</span>
-<span id="cb8-17"><a href="" aria-label="17"></a>    )</span>
-<span id="cb8-18"><a href="" aria-label="18"></a>  )</span>
-<span id="cb8-19"><a href="" aria-label="19"></a>)</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="" aria-label="1"></a><span class="fu">library</span>(shiny)</span>
+<span id="cb7-2"><a href="" aria-label="2"></a><span class="fu">library</span>(a11yShiny)</span>
+<span id="cb7-3"><a href="" aria-label="3"></a></span>
+<span id="cb7-4"><a href="" aria-label="4"></a><span class="co"># Remplacement des fonctions standards par les variantes "a11y_"</span></span>
+<span id="cb7-5"><a href="" aria-label="5"></a>ui <span class="ot">&lt;-</span> <span class="fu">a11y_fluidPage</span>(</span>
+<span id="cb7-6"><a href="" aria-label="6"></a>  <span class="at">lang =</span> <span class="st">"fr"</span>,</span>
+<span id="cb7-7"><a href="" aria-label="7"></a>  <span class="at">title =</span> <span class="st">"Mon Application Shiny Accessible"</span>,</span>
+<span id="cb7-8"><a href="" aria-label="8"></a>  </span>
+<span id="cb7-9"><a href="" aria-label="9"></a>  <span class="fu">a11y_fluidRow</span>(</span>
+<span id="cb7-10"><a href="" aria-label="10"></a>    <span class="fu">a11y_column</span>(</span>
+<span id="cb7-11"><a href="" aria-label="11"></a>      <span class="at">width =</span> <span class="dv">6</span>,</span>
+<span id="cb7-12"><a href="" aria-label="12"></a>      <span class="fu">a11y_actionButton</span>(<span class="st">"refresh"</span>, <span class="at">label =</span> <span class="st">"Rafraîchir les données"</span>)</span>
+<span id="cb7-13"><a href="" aria-label="13"></a>    ),</span>
+<span id="cb7-14"><a href="" aria-label="14"></a>    <span class="fu">a11y_column</span>(</span>
+<span id="cb7-15"><a href="" aria-label="15"></a>      <span class="at">width =</span> <span class="dv">6</span>,</span>
+<span id="cb7-16"><a href="" aria-label="16"></a>      <span class="fu">a11y_selectInput</span>(<span class="st">"choix"</span>, <span class="at">label =</span> <span class="st">"Choisir une option"</span>, <span class="at">choices =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>)</span>
+<span id="cb7-17"><a href="" aria-label="17"></a>    )</span>
+<span id="cb7-18"><a href="" aria-label="18"></a>  )</span>
+<span id="cb7-19"><a href="" aria-label="19"></a>)</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="les-packages" class="slide level2">
 <h2>Les packages</h2>
@@ -677,19 +711,19 @@ Règle d'or :
 </ul>
 <div class="columns">
 <div class="column" style="width:25%;">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb8-1"><a href="" aria-label="1"></a><span class="fu">format</span><span class="kw">:</span></span>
+<span id="cb8-2"><a href="" aria-label="2"></a><span class="at">  </span><span class="fu">html</span><span class="kw">:</span></span>
+<span id="cb8-3"><a href="" aria-label="3"></a><span class="at">    </span><span class="fu">axe</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+</div><div class="column" style="width:35%;">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb9-1"><a href="" aria-label="1"></a><span class="fu">format</span><span class="kw">:</span></span>
 <span id="cb9-2"><a href="" aria-label="2"></a><span class="at">  </span><span class="fu">html</span><span class="kw">:</span></span>
-<span id="cb9-3"><a href="" aria-label="3"></a><span class="at">    </span><span class="fu">axe</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
-</div><div class="column" style="width:35%;">
+<span id="cb9-3"><a href="" aria-label="3"></a><span class="at">    </span><span class="fu">axe</span><span class="kw">:</span></span>
+<span id="cb9-4"><a href="" aria-label="4"></a><span class="at">      </span><span class="fu">output</span><span class="kw">:</span><span class="at"> document</span></span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+</div><div class="column" style="width:30%;">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb10-1"><a href="" aria-label="1"></a><span class="fu">format</span><span class="kw">:</span></span>
 <span id="cb10-2"><a href="" aria-label="2"></a><span class="at">  </span><span class="fu">html</span><span class="kw">:</span></span>
 <span id="cb10-3"><a href="" aria-label="3"></a><span class="at">    </span><span class="fu">axe</span><span class="kw">:</span></span>
-<span id="cb10-4"><a href="" aria-label="4"></a><span class="at">      </span><span class="fu">output</span><span class="kw">:</span><span class="at"> document</span></span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
-</div><div class="column" style="width:30%;">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb11-1"><a href="" aria-label="1"></a><span class="fu">format</span><span class="kw">:</span></span>
-<span id="cb11-2"><a href="" aria-label="2"></a><span class="at">  </span><span class="fu">html</span><span class="kw">:</span></span>
-<span id="cb11-3"><a href="" aria-label="3"></a><span class="at">    </span><span class="fu">axe</span><span class="kw">:</span></span>
-<span id="cb11-4"><a href="" aria-label="4"></a><span class="at">      </span><span class="fu">output</span><span class="kw">:</span><span class="at"> json</span></span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb10-4"><a href="" aria-label="4"></a><span class="at">      </span><span class="fu">output</span><span class="kw">:</span><span class="at"> json</span></span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
 </div></div>
 <h3 id="pdf-quarto-1.9">PDF (quarto 1.9)</h3>
 <ul>
@@ -701,9 +735,9 @@ Règle d'or :
 <div class="columns">
 <div class="column" style="width:50%;">
 <p>PDF (LaTeX): Standard UA-2</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb12-1"><a href="" aria-label="1"></a><span class="fu">format</span><span class="kw">:</span></span>
-<span id="cb12-2"><a href="" aria-label="2"></a><span class="at">  </span><span class="fu">pdf</span><span class="kw">:</span></span>
-<span id="cb12-3"><a href="" aria-label="3"></a><span class="at">    </span><span class="fu">pdf-standard</span><span class="kw">:</span><span class="at"> ua-2</span></span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb11-1"><a href="" aria-label="1"></a><span class="fu">format</span><span class="kw">:</span></span>
+<span id="cb11-2"><a href="" aria-label="2"></a><span class="at">  </span><span class="fu">pdf</span><span class="kw">:</span></span>
+<span id="cb11-3"><a href="" aria-label="3"></a><span class="at">    </span><span class="fu">pdf-standard</span><span class="kw">:</span><span class="at"> ua-2</span></span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell" data-reveal="true" data-layout-align="default">
 <div class="cell-output-display">
 <div>
@@ -732,9 +766,9 @@ Règle d'or :
 </div>
 </div><div class="column" style="width:50%;">
 <p>Typst: Standard UA-1</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb13-1"><a href="" aria-label="1"></a><span class="fu">format</span><span class="kw">:</span></span>
-<span id="cb13-2"><a href="" aria-label="2"></a><span class="at">  </span><span class="fu">typst</span><span class="kw">:</span></span>
-<span id="cb13-3"><a href="" aria-label="3"></a><span class="at">    </span><span class="fu">pdf-standard</span><span class="kw">:</span><span class="at"> ua-1</span></span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb12-1"><a href="" aria-label="1"></a><span class="fu">format</span><span class="kw">:</span></span>
+<span id="cb12-2"><a href="" aria-label="2"></a><span class="at">  </span><span class="fu">typst</span><span class="kw">:</span></span>
+<span id="cb12-3"><a href="" aria-label="3"></a><span class="at">    </span><span class="fu">pdf-standard</span><span class="kw">:</span><span class="at"> ua-1</span></span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell" data-reveal="true" data-layout-align="default">
 <div class="cell-output-display">
 <div>
@@ -768,16 +802,16 @@ Règle d'or :
 </section>
 <section id="exemple" class="slide level2">
 <h2>Exemple</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb14-1"><a href="" aria-label="1"></a><span class="co">---</span></span>
-<span id="cb14-2"><a href="" aria-label="2"></a><span class="an">title:</span><span class="co"> Test de la validation d'accessibilité quarto</span></span>
-<span id="cb14-3"><a href="" aria-label="3"></a></span>
-<span id="cb14-4"><a href="" aria-label="4"></a><span class="an">format:</span></span>
-<span id="cb14-5"><a href="" aria-label="5"></a><span class="co">  html: </span></span>
-<span id="cb14-6"><a href="" aria-label="6"></a><span class="co">    axe:</span></span>
-<span id="cb14-7"><a href="" aria-label="7"></a><span class="co">      output: document</span></span>
-<span id="cb14-8"><a href="" aria-label="8"></a><span class="co">---</span></span>
-<span id="cb14-9"><a href="" aria-label="9"></a></span>
-<span id="cb14-10"><a href="" aria-label="10"></a>Voici une violation des rêgles de contraste: <span class="co">[</span><span class="ot">Texte en contraste insuffisant.</span><span class="co">]</span>{style="color: #eee"}.</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb13-1"><a href="" aria-label="1"></a><span class="co">---</span></span>
+<span id="cb13-2"><a href="" aria-label="2"></a><span class="an">title:</span><span class="co"> Test de la validation d'accessibilité quarto</span></span>
+<span id="cb13-3"><a href="" aria-label="3"></a></span>
+<span id="cb13-4"><a href="" aria-label="4"></a><span class="an">format:</span></span>
+<span id="cb13-5"><a href="" aria-label="5"></a><span class="co">  html: </span></span>
+<span id="cb13-6"><a href="" aria-label="6"></a><span class="co">    axe:</span></span>
+<span id="cb13-7"><a href="" aria-label="7"></a><span class="co">      output: document</span></span>
+<span id="cb13-8"><a href="" aria-label="8"></a><span class="co">---</span></span>
+<span id="cb13-9"><a href="" aria-label="9"></a></span>
+<span id="cb13-10"><a href="" aria-label="10"></a>Voici une violation des rêgles de contraste: <span class="co">[</span><span class="ot">Texte en contraste insuffisant.</span><span class="co">]</span>{style="color: #eee"}.</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
 <p>package {verapdf} (TBC)</p>
 </section></section>
 <section id="questions-partages" class="title-slide slide level1 center">
